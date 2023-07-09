@@ -27,6 +27,21 @@ if ($conn->connect_error) {
         <meta charset="UTF-8">
         <title></title>
         
+        <style>
+			/* Hide scrollbar for Chrome, Safari and Opera */
+            body::-webkit-scrollbar {
+                display: none;
+            }
+
+            /* Hide scrollbar for IE, Edge and Firefox */
+            body {
+                -ms-overflow-style: none;
+                /* IE and Edge */
+                scrollbar-width: none;
+                /* Firefox */
+            }
+        </style>
+        
         <!--add external files-->
         <link rel="Stylesheet" href="css/navbar.css">
         <script src="navbar.js"></script>
