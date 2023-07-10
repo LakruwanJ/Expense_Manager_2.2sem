@@ -1,21 +1,13 @@
 <!DOCTYPE html>
-<?php
-// Establish a connection to the MySQL server
-$conn = new mysqli('localhost', 'root', '', 'expensemanager');
-// Check the connection
-if ($conn->connect_error) {die("Connection failed: " . $conn->connect_error);}
-
-?>
+//<?php
+//// Establish a connection to the MySQL server
+//$conn = new mysqli('localhost', 'root', '', 'expensemanager');
+//// Check the connection
+//if ($conn->connect_error) {die("Connection failed: " . $conn->connect_error);}
+//?>
 <html>
     <head>
         <meta charset="UTF-8">
-        
-        <style>
-    /* Hide the scrollbar */
-    .no-scrollbar {
-      overflow: hidden;
-    }
-  </style>
         
         <!--add Bootstrap-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
@@ -40,22 +32,23 @@ if ($conn->connect_error) {die("Connection failed: " . $conn->connect_error);}
         <!--add external files-->
         <link rel="Stylesheet" href="css/navbar.css">
         
+        <script src="navbar.js"></script>
+        
         
         
         
         <!--css part-->
         <style>
-            
-            .navbar-toggler-icon{
-                color: #000;}
-
-            iframe {
-                overflow-y: hidden;
+            body{
+                overflow-y: visible;
                 overflow-x: hidden;
-                
+            }
+            #frame { 
                 width: 100%;
                 height: 100%;
             }
+            .navbar-toggler-icon{
+                color: #000;
         </style>
         
         <title>Expence Manager</title>
@@ -69,17 +62,19 @@ if ($conn->connect_error) {die("Connection failed: " . $conn->connect_error);}
         <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
           <div class="position-sticky">
             <div class="list-group list-group-flush mx-3 mt-4">
-                <!--item 1-->
-                <a class="list-group-item list-group-item-action py-2 ripple" data-bs-toggle="list" href="#Dashboard"><i class="fas fa-gauge-high fa-fw me-3"></i><span>Dashboard</span></a>
-                <a class="list-group-item list-group-item-action py-2 ripple" data-bs-toggle="list" href="#Dashboardf"><i class="fas fa-gauge-high fa-fw me-3"></i><span>Dashboard_</span></a>
-                <!--item 1-->
-                <a class="list-group-item list-group-item-action py-2 ripple" data-bs-toggle="list" href="#proposal"><i class="fas fa-file-alt fa-fw me-3"></i><span>Proposals</span></a>
-
-                <a class="list-group-item list-group-item-action py-2 ripple" data-bs-toggle="list" href="#reports"><i class="fas fa-chart-line fa-fw me-3"></i><span>Reports</span></a>
-                <!--item 2-->
-                <a class="list-group-item list-group-item-action py-2 ripple" data-bs-toggle="list" href="#team"><i class="fas fa-users fa-fw me-3"></i><span>Our Team</span></a>
-                <a href="#" class="list-group-item list-group-item-action py-2 ripple" data-bs-toggle="list"><i class="fas fa-comment-dots fa-fw me-3"></i><span>Feedback</span></a>
-                <a href="#" class="list-group-item list-group-item-action py-2 ripple" data-bs-toggle="list"><i class="fas fa-headset fa-fw me-3"></i><span>Contact Us</span></a>
+                
+                <!--Tabs New Arrangment Start-->
+                <!--Dashboard-->
+                <a class="list-group-item list-group-item-action active sidebarnew1" id="list-dashBoard-list" data-bs-toggle="list" href="#list-dashBoard" role="tab" aria-controls="list-dashBoard" aria-selected="false" tabindex="-1"><i class="fas fa-gauge-high fa-fw me-3"></i><span>Dashboard</span></a>
+                <!--Proposals-->
+                <a class="list-group-item list-group-item-action sidebarnew1" id="list-proposal-list" data-bs-toggle="list" href="#list-proposal" role="tab" aria-controls="list-proposal" aria-selected="false"><i class="fas fa-file-alt fa-fw me-3"></i><span>Proposals</span></a>
+                 <!--Employees-->
+                <a class="list-group-item list-group-item-action sidebarnew1" id="list-employee-list" data-bs-toggle="list" href="#list-employee" role="tab" aria-controls="list-employee" aria-selected="false"><i class="fas fa-users fa-fw me-3"></i><span>Employees</span></a>
+                <!--Reports-->
+                <a class="list-group-item list-group-item-action sidebarnew1" id="list-reports-list" data-bs-toggle="list" href="#list-reports" role="tab" aria-controls="list-reports" aria-selected="false"><i class="fas fa-chart-line fa-fw me-3"></i><span>Reports</span></a>
+                <!--Communicate-->
+                <a class="list-group-item list-group-item-action sidebarnew1" id="list-communication-list" data-bs-toggle="list" href="#list-communication" role="tab" aria-controls="list-communication" aria-selected="false"><i class="fas fa-headset fa-fw me-3"></i><span>Communication</span></a>
+                <!--Tabs New Arrangment End-->                
             </div>
           </div>
         </nav>
@@ -120,17 +115,17 @@ if ($conn->connect_error) {die("Connection failed: " . $conn->connect_error);}
                 
                 <!--profile-->
                 <li style="padding-top: 13px">
-                    <?php
-                    $sql = "SELECT * FROM temp WHERE id='1'";
-                    $result = $conn->query($sql);
-                    if ($result->num_rows > 0) {
-                        while ($row = $result->fetch_assoc()) {
-                            $username = $row["Name"];
-                            echo $username;
-                        }
-                    }
-                    $conn->close();
-                    ?>&nbsp;</li>
+                    //<?php
+//                    $sql = "SELECT * FROM temp WHERE id='3'";
+//                    $result = $conn->query($sql);
+//                    if ($result->num_rows > 0) {
+//                        while ($row = $result->fetch_assoc()) {
+//                            $username = $row["Name"];
+//                            echo $username;
+//                        }
+//                    }
+//                    $conn->close();
+//                    ?>&nbsp;</li>
                 <li class="nav-item dropdown" aria-labelledby="navbarDropdownMenuLink">
                     <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="true">
                       <img src="Images/propic.jpg" class="rounded-circle" height="40" alt="ProPic" loading="lazy" />
@@ -162,21 +157,16 @@ if ($conn->connect_error) {die("Connection failed: " . $conn->connect_error);}
     <div id="content">
  
         <!--Manu bar items-->
-        <div class="tab-content" id="nav-tabContent">
-            
-            <!--item 1-->
-            <div class="tab-pane fade" id="Dashboard" style="height: 1000px;"><iframe src="Login.php"></iframe></div>
-            <div class="tab-pane fade" id="Dashboardf" style="height: 1000px;"><iframe src="dashBoard.php"></iframe></div>
-            <div class="tab-pane fade" id="proposal" style="height: 1000px;"><iframe src="proposalsContents.php"></iframe></div>
-            
-            <!--item 2-->
-            <div class="tab-pane fade" id="reports" style="height:1000px"><iframe src=""></iframe></div>
-
-            <div class="tab-pane fade" id="team"  style="height:1000px"><iframe src="Our_team.php" class="no-scrollbar"></iframe></div>
-            
+        <div class="tab-content" id="nav-tabContent"> 
+        <!--new menu item start-->
+        <div class="tab-pane fade" id="list-dashBoard" role="tabpanel" aria-labelledby="list-dashBoard-list" style="height:100vh;"><iframe id="frame" src="dashBoardContent.php"></iframe></div>
+        <div class="tab-pane fade" id="list-proposal" role="tabpanel" aria-labelledby="list-proposal-list" style="height:100vh;"><iframe id="frame" src="proposalsContents.php"></iframe></div>
+        <div class="tab-pane fade" id="list-employee" role="tabpanel" aria-labelledby="list-employee-list" style="height:100vh;"><iframe id="frame" src="proposalsContents.php"></iframe></div>
+        <div class="tab-pane fade" id="list-reports" role="tabpanel" aria-labelledby="list-reports-list" style="height:100vh;"><iframe id="frame" src="dashBoardContent.php"></iframe></div>
+        <div class="tab-pane fade" id="list-communication" role="tabpanel" aria-labelledby="list-communication-list" style="height:100vh;"><iframe id="frame" src="proposalsContents.php"></iframe></div>
+        <!--new menu item end-->           
         </div>
     </div>
-    
 </main>
 <!--Main layout-->
     

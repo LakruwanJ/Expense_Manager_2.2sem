@@ -49,6 +49,21 @@ $conn->close();
 
         <!-- MDB -->
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.3.0/mdb.min.js"></script>
+        
+        <style>
+			/* Hide scrollbar for Chrome, Safari and Opera */
+            body::-webkit-scrollbar {
+                display: none;
+            }
+
+            /* Hide scrollbar for IE, Edge and Firefox */
+            body {
+                -ms-overflow-style: none;
+                /* IE and Edge */
+                scrollbar-width: none;
+                /* Firefox */
+            }
+        </style>
 
     </head>
     <body> 
@@ -88,15 +103,15 @@ $conn->close();
       <div class="col">
         <nav class="bg-light rounded-3 p-3 mb-4">
           <ol class="breadcrumb mb-0">
-            <li><a href="index.php">Home </a></li>
+            <li>Home </li>
             <li>&nbsp;&nbsp; > &nbsp;&nbsp;</li>
-            <li><a href="Our_team.php"> Our Team</a></li>
+            <li>Our Team</li>
             <li>&nbsp;&nbsp; > &nbsp;&nbsp;</li>
             <li class="active">User Profile - <?php echo $name ?></li>
           </ol>
         </nav>
       </div>
-    </div><?php $link = Dashboard;echo '#Dashboard';?>
+    </div>
     
     
     <!--user Information-->
@@ -120,7 +135,7 @@ $conn->close();
     <div class="col-lg-8">
         
         <!--main information-->
-        <div class="card mb-8">
+        <div class="card mb-2">
           <div class="card-body">
             <div class="row">
               <div class="col-sm-4"><p class="mb-0">ID</p></div>
@@ -148,49 +163,10 @@ $conn->close();
             </div>
           </div>
         </div>
-
-        
-        <div class="row">
-          
-            
-            <!--social media-->
-          <div class="col-md-6">
-            <div class="card mb-4 mb-md-0">
-              <ul class="list-group list-group-flush rounded-3">
-              <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                <i class="fas fa-globe fa-lg" text-warning></i><p class="mb-0">https://mdbootstrap.com</p>
-              </li>
-              <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                <i class="fab fa-twitter fa-lg" style="color: #55acee;"></i><p class="mb-0">https://mdbootstrap.com</p>
-              </li>
-              <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                <i class="fab fa-facebook-f fa-lg" style="color: #3b5998;"></i><p class="mb-0">https://mdbootstrap.com</p>
-              </li>
-              <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                <i class="fab fa-linkedin-in fa-lg" style="color: #0072b1;"></i><p class="mb-0">https://mdbootstrap.com</p>
-              </li>
-              </ul>
-            </div>
-          </div>
-            
-            
-            <!--description-->
-          <div class="col-md-6">
-            <div class="card mb-4 mb-md-0">
-              <div class="card-body">
-                <p class="mb-4"><span class="text-primary font-italic me-1">assigment</span> Project Status
-                </p>
-                <hr>
-              </div>
-            </div>
-          </div>
-            
-            
-        </div>
-        
+       
         <!--praposals-->
         <br>
-        <div class="card mb-4">
+        <div class="card mb-2">
           <div class="card-body">
             <div class="row">
                 <div class="col-sm-4"><p class="mb-0"><b>Proposal Details</b></p></div><hr>
@@ -211,7 +187,7 @@ $conn->close();
                 <p class="mb-0">Proposal 5</p>
             </div><hr>
             <div class="d-flex justify-content-center mb-2">
-                <button type="button" class="btn btn-primary">See all</button>
+                <a href="proposals.php"><button type="button" class="btn btn-primary">See all</button></a>
             </div>
           </div>
         </div>
