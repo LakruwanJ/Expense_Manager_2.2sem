@@ -70,6 +70,7 @@ if ($conn->connect_error) {die("Connection failed: " . $conn->connect_error);}
         <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
           <div class="position-sticky">
             <div class="list-group list-group-flush mx-3 mt-4">
+                <a class="list-group-item list-group-item-action py-2 ripple active" data-bs-toggle="list" href="#login" aria-selected="true" role="tab"></a>
                 <!--item 1-->
                 <a class="list-group-item list-group-item-action py-2 ripple" data-bs-toggle="list" href="#Dashboard"><i class="fas fa-gauge-high fa-fw me-3"></i><span>Dashboard</span></a>
                 <!--item 1-->
@@ -162,7 +163,7 @@ if ($conn->connect_error) {die("Connection failed: " . $conn->connect_error);}
         <!--Manu bar items-->
         <div class="tab-content" id="nav-tabContent">
             
-
+            <div class="tab-pane fade" id="login" style="height: 100%;"><iframe src="Login.php"></iframe></div>
             
             <!--item 1-->
             <div class="tab-pane fade" id="Dashboard" style="height: 100%;"><iframe src="Profile.php"></iframe></div>
@@ -171,10 +172,6 @@ if ($conn->connect_error) {die("Connection failed: " . $conn->connect_error);}
             <div class="tab-pane fade" id="reports" style="height:1000px"><iframe src="Our_team.php"></iframe></div>
 
             <div class="tab-pane fade" id="team"  style="height:1000px"><iframe src="Our_team.php" class="no-scrollbar"></iframe></div>
-            
-            <div class="tab-pane fade" id="list-reports" role="tabpanel" aria-labelledby="list-reports-list" style="height:1 ;">reports</div>
-            <div class="tab-pane fade" id="list-task" role="tabpanel" aria-labelledby="list-task-list" style="height:1 ;">task</div>
-            <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list" style="height:1 ;">profile</div>
         </div>
     </div>
     

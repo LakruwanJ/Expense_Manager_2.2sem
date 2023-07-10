@@ -28,15 +28,15 @@ and open the template in the editor.
     <!--nav bar-->
     <br>
       <div class="row">
-          <div class="col-lg-1"></div>    
+        <div class="col-lg-1"></div> 
     <div class="col-lg-10">
         <div class="card mb-8">
         
             <div class="card-body text-center"><H6>Enter your Details</h6></div>
         </div>
       </div>
-          <div class="col-lg-1"></div>
-    </div>
+        <div class="col-lg-1"></div> 
+      </div>
     
     <!--change password-->
     <div class="row">
@@ -59,15 +59,14 @@ and open the template in the editor.
 
                  </div>
                  <div class="col-lg-1"></div>
-             </div>
+            </div></div></div>
+             
 
     <!--user Information-->
         <div class="row">
         <div class="col-lg-1"></div>    
          <div class="col-lg-10">
-        
-        
-        <div class="card mb-8">
+          <div class="card mb-8">
           <div class="card-body">
             <div class="row">
               <div class="col-sm-4"><p class="mb-0">ID</p></div>
@@ -76,6 +75,10 @@ and open the template in the editor.
             <div class="row">
               <div class="col-sm-4"><p class="mb-0">Full Name</p></div>
               <div class="col-sm-8"><input type="text" name="Full Name" id="form3Example3" class="form-control form-control-lg" placeholder="Enter your Full Name" /></div>
+            </div><hr style="opacity: .05">
+            <div class="row">
+              <div class="col-sm-4"><p class="mb-0">Add photo</p></div>
+              <div class="col-sm-8"><input class="form-control" type="file" id="formFileMultiple" multiple /></div>
             </div><hr style="opacity: .05">
             <div class="row">
               <div class="col-sm-4"><p class="mb-0">Possition</p></div>
@@ -87,7 +90,7 @@ and open the template in the editor.
             </div><hr style="opacity: .05">
             <div class="row">
               <div class="col-sm-4"><p class="mb-0">Phone Number(Office)</p></div>
-              <div class="col-sm-8"><input type="number" name="office NO" id="form3Example3" class="form-control form-control-lg" placeholder="Enter your " /></div>
+              <div class="col-sm-8"><input type="number" name="office NO" id="form3Example3" class="form-control form-control-lg" placeholder="Enter your office Number" /></div>
             </div><hr style="opacity: .05">
             <div class="row">
               <div class="col-sm-4"><p class="mb-0">Phone Number(Personal)</p></div>

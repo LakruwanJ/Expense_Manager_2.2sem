@@ -37,7 +37,7 @@
             </div>
             <div class="row">
                 <div class="col-lg-1"></div>    
-                <div class="col-lg-8">
+                <div class="col-lg-7">
                     <!-- Proposal Summary -->
                     <div class="card mb-4">
                         <div class="card-body">
@@ -70,7 +70,7 @@
             </div>
             <div class="row">
                 <div class="col-lg-1"></div>    
-                <div class="col-lg-8">
+                <div class="col-lg-7">
                     <!-- Proposal Name -->
                     <div class="card">
                         <div class="card-body">

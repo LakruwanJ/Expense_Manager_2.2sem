@@ -24,13 +24,13 @@ and open the template in the editor.
     </head>
     <body>
       
-<section class="">
+<section>
   
   <div class="px-4 py-5 px-md-5 text-center text-lg-start" style="background-color: hsl(0, 0%, 96%)">
     <div class="container">
       <div class="row gx-lg-5 align-items-center">
         <div class="col-lg-6 mb-5 mb-lg-0">
-            <img src="c.jpg"
+            <img src="images/c.jpg"
           class="img-fluid" alt="Sample image">
             
             
@@ -53,12 +53,12 @@ and open the template in the editor.
           <!-- Password input -->
           <div class="mb-4">
               <label class="form-label" for="form3Example3">Password</label>
-            <input type="Password" id="form3Example3" class="form-control form-control-lg" placeholder="Enter Password" />
+              <input type="Password" id="form3Example3" class="form-control form-control-lg" placeholder="Enter Password"/><br>
             
           </div>
           
-          <div class="d-flex justify-content-between align-items-center">
-            <!-- Checkbox -->
+         <!-- <div class="d-flex justify-content-between align-items-center">
+            
             <div class="form-check mb-0">
               <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
               <label class="form-check-label" for="form2Example3">
@@ -66,21 +66,21 @@ and open the template in the editor.
               </label>
             </div>
             <a href="#!" class="text-body">Forgot password?</a>
-          </div>
+          </div>-->
 
-           <!-- Login button-->        
-          <div class="text-center text-lg-start mt-4 pt-2">
-            <button type="button" class="btn btn-primary btn-lg"
-              style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
-            
-          </div>           
+           <!-- Login button--> 
+           
+           <div class="d-grid gap-2 col-6 mx-auto">
+
+               <button class="btn btn-primary" type="button">LOGIN</button>
+           </div>          
         </form>
       
       </div>
       </div>
       </div>
     </div>
-  </div>
+    </div></div>
 
 </section>
         <?php

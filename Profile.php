@@ -96,7 +96,7 @@ $conn->close();
           </ol>
         </nav>
       </div>
-    </div>
+    </div><?php $link = Dashboard;echo '#Dashboard';?>
     
     
     <!--user Information-->

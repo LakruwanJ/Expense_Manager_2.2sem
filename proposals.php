@@ -52,7 +52,7 @@
               <div class="col-sm-4"><p class="text-muted mb-0"><?php echo "Name :" ?></p></div>
               <div class="col-sm-4"><p class="text-muted mb-0"><?php echo "Submit Date :" ?></p></div>
               <div class="col-sm-2"><p class="text-muted mb-0"><?php echo "Status :" ?></p></div>
-              <div class="col-sm-2"><p class="text-muted mb-0"><?php echo "" ?></p><a href="proposals2.php" class="btn btn-primary">Review</a></div>
+              <div class="col-sm-2"><p class="text-muted mb-0"><?php echo "" ?></p><a href="proposal.php" class="btn btn-primary">Review</a></div>
               
           </div>
         </div>
