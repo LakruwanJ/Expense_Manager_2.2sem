@@ -10,10 +10,25 @@
     <!-- MDB -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.3.0/mdb.min.js"></script>
     
+    <style>
+			/* Hide scrollbar for Chrome, Safari and Opera */
+            body::-webkit-scrollbar {
+                display: none;
+            }
+
+            /* Hide scrollbar for IE, Edge and Firefox */
+            body {
+                -ms-overflow-style: none;
+                /* IE and Edge */
+                scrollbar-width: none;
+                /* Firefox */
+            }
+        </style>
+    
     <title>Proposals Features</title>
 </head>
-<body>
-    <section style="background-color: #eee; padding-top: 50px">    
+<body style="background-color: #eee;">
+    <section style="background-color: #eee; padding-top: 20px;">    
         <div class="container py-5">
             <!-- Nav bar -->
             <br>
@@ -22,13 +37,11 @@
                 <div class="col-lg-10">
                     <nav class="bg-light rounded-3 p-3 mb-4">
                         <ol class="breadcrumb mb-0">
-                            <li><a href="index.php">Home</a></li>
+                            <li>Home</li>
+                            <li>&nbsp;&nbsp; > &nbsp;&nbsp;</li>                            
+                            <li>Proposals</li>
                             <li>&nbsp;&nbsp; > &nbsp;&nbsp;</li>
-                            
-                            <li><a href="Proposals.php">Review</a></li>
-                            <li>&nbsp;&nbsp; > &nbsp;&nbsp;</li>
-                            <li><a href="Proposals.php">Proposals</a></li>
-                            <li>&nbsp;&nbsp; > &nbsp;&nbsp;</li>
+                            <li>Review</li>
                         
                         </ol>
                     </nav>

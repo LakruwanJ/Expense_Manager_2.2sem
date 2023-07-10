@@ -68,7 +68,7 @@ if ($conn->connect_error) {
       <div class="col">
         <nav class="bg-light rounded-3 p-3 mb-4">
           <ol class="breadcrumb mb-0">
-            <li><a href="index.php">Home </a></li>
+            <li>Home</li>
             <li>&nbsp;&nbsp; > &nbsp;&nbsp;</li>
             <li class="active">Our Team</li>
           </ol>

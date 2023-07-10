@@ -104,19 +104,19 @@ $conn->close();
             </div>
             <div class="row">
               <div class="col-sm-4"><p class="mb-0">Author Name</p></div>
-              <div class="col-sm-8"><input type="text" name="id" id="form3Example3" class="form-control form-control-lg" placeholder="Enter your User Name" /></div>
+              <div class="col-sm-8"><input type="text" name="id" id="form3Example3" class="form-control form-control-lg" placeholder="Enter your Name" /></div>
             </div><hr style="opacity: .05">
             <div class="row">
               <div class="col-sm-4"><p class="mb-0">Author Phone Number</p></div>
-              <div class="col-sm-8"><input type="text" name="Full Name" id="form3Example3" class="form-control form-control-lg" placeholder="Enter your Full Name" /></div>
+              <div class="col-sm-8"><input type="text" name="Full Name" id="form3Example3" class="form-control form-control-lg" placeholder="Enter your Phone Number" /></div>
             </div><hr style="opacity: .05">
             <div class="row">
               <div class="col-sm-4"><p class="mb-0">Author e-mail</p></div>
-              <div class="col-sm-8"><input type="text" name="Possition" id="form3Example3" class="form-control form-control-lg" placeholder="Enter your Possition" /></div>
+              <div class="col-sm-8"><input type="text" name="Possition" id="form3Example3" class="form-control form-control-lg" placeholder="Enter your Email" /></div>
             </div><hr style="opacity: .05">
             <div class="row">
               <div class="col-sm-4"><p class="mb-0">Date</p></div>
-              <div class="col-sm-8"><input type="text" name="email" id="form3Example3" class="form-control form-control-lg" placeholder="Enter your Email" /></div>
+              <div class="col-sm-8"><input type="text" name="email" id="form3Example3" class="form-control form-control-lg" placeholder="DD/MM/YYYY" /></div>
             </div>
         </div>
 
@@ -126,19 +126,19 @@ $conn->close();
             </div>
             <div class="row">
               <div class="col-sm-4"><p class="mb-0">Proposal Subject</p></div>
-              <div class="col-sm-8"><input type="text" name="id" id="form3Example3" class="form-control form-control-lg" placeholder="Enter your User Name" /></div>
+              <div class="col-sm-8"><input type="text" name="id" id="form3Example3" class="form-control form-control-lg" placeholder="" /></div>
             </div><hr style="opacity: .05">
             <div class="row">
               <div class="col-sm-4"><p class="mb-0">Category</p></div>
-              <div class="col-sm-8"><input type="text" name="Full Name" id="form3Example3" class="form-control form-control-lg" placeholder="Enter your Full Name" /></div>
+              <div class="col-sm-8"><input type="text" name="Full Name" id="form3Example3" class="form-control form-control-lg" placeholder="" /></div>
             </div><hr style="opacity: .05">
             <div class="row">
               <div class="col-sm-4"><p class="mb-0">Description</p></div>
-              <div class="col-sm-8"><input type="text" name="Possition" id="form3Example3" class="form-control form-control-lg" placeholder="Enter your Possition" /></div>
+              <div class="col-sm-8"><input type="textArea" name="Possition" id="form3Example3" class="form-control form-control-lg" placeholder="" /></div>
             </div><hr style="opacity: .05">
             <div class="row">
               <div class="col-sm-4"><p class="mb-0">Add Document</p></div>
-              <div class="col-sm-8"><input type="text" name="email" id="form3Example3" class="form-control form-control-lg" placeholder="Enter your Email" /></div>
+              <div class="col-sm-8"><input type="text" name="email" id="form3Example3" class="form-control form-control-lg" placeholder="" /></div>
             </div><hr style="opacity: .05">
               </form>
         </div>

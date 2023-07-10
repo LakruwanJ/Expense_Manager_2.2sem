@@ -19,14 +19,28 @@ and open the template in the editor.
         <!-- MDB -->
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.3.0/mdb.min.js"></script>
         
+        <style>
+			/* Hide scrollbar for Chrome, Safari and Opera */
+            body::-webkit-scrollbar {
+                display: none;
+            }
+
+            /* Hide scrollbar for IE, Edge and Firefox */
+            body {
+                -ms-overflow-style: none;
+                /* IE and Edge */
+                scrollbar-width: none;
+                /* Firefox */
+            }
+        </style>
         
         <title>Login</title>
     </head>
-    <body>
+    <body >
       
 <section>
   
-  <div class="px-4 py-5 px-md-5 text-center text-lg-start" style="background-color: hsl(0, 0%, 96%)">
+  <div class="px-4 py-5 px-md-5 text-center text-lg-start">
     <div class="container">
       <div class="row gx-lg-5 align-items-center">
         <div class="col-lg-6 mb-5 mb-lg-0">
@@ -70,10 +84,10 @@ and open the template in the editor.
 
            <!-- Login button--> 
            
-           <div class="d-grid gap-2 col-6 mx-auto">
+           <a href="editProfile.php"><div class="d-grid gap-2 col-6 mx-auto">
 
                <button class="btn btn-primary" type="button">LOGIN</button>
-           </div>          
+           </div></a>          
         </form>
       
       </div>

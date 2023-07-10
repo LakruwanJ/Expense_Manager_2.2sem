@@ -18,7 +18,22 @@ and open the template in the editor.
         <!-- MDB -->
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.3.0/mdb.min.js"></script>
         
-        <title></title>
+        <style>
+			/* Hide scrollbar for Chrome, Safari and Opera */
+            body::-webkit-scrollbar {
+                display: none;
+            }
+
+            /* Hide scrollbar for IE, Edge and Firefox */
+            body {
+                -ms-overflow-style: none;
+                /* IE and Edge */
+                scrollbar-width: none;
+                /* Firefox */
+            }
+        </style>
+        
+        <title>Edit Profile</title>
     </head>
     <body>
         
@@ -38,6 +53,7 @@ and open the template in the editor.
         <div class="col-lg-1"></div> 
       </div>
     
+    <form action="#" method="POST" enctype="multipart/form-data">
     <!--change password-->
     <div class="row">
         <div class="col-lg-1"></div>    
@@ -96,11 +112,17 @@ and open the template in the editor.
             <div class="row">
               <div class="col-sm-4"><p class="mb-0">Phone Number(Personal)</p></div>
               <div class="col-sm-8"><input type="text" name="Personal No" id="form3Example3" class="form-control form-control-lg" placeholder="Enter your mobile Number" /></div>
-          </div>
+            </div>
+            <div class="row" style="padding-top: 20px;">
+                <div class="d-grid gap-2 col-6 mx-auto">
+                    <input class="btn btn-primary" type="button" type="submit" value="Save " />
+                </div><br
+            </div>
             
         </div>
 
-        
+            </form>
+
     </div>
             <div class="col-lg-1"></div>    
 
