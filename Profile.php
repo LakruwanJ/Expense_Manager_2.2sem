@@ -67,34 +67,8 @@ $conn->close();
 
     </head>
     <body> 
-
-        <!-- Navbar -->
-        <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
-            <!-- Container wrapper -->
-            <div class="container-fluid" >
-
-                <!-- Logo area -->
-                <a class="navbar-brand" class="navbar-nav d-flex justify-content-end align-items-center" href="#">
-                    <p> logo </p>
-                </a>
-
-                <!-- Right links -->
-                <ul  class="navbar-nav ms-auto d-flex flex-row"> 
-
-                    <li>
-                        <a class="nav-link" role="button">
-                            <img src="a.jpg" class="rounded-circle" height="40" alt="ProPic"/>
-                        </a>
-                    </li>
-                    <li>&nbsp;</li>            
-                </ul>
-            </div>
-            <!-- Container wrapper -->
-        </nav>
-    
-    
-    
-<section style="background-color: #eee; padding-top: 50px">    
+       
+<section style="background-color: #eee; padding-top: 20px">    
   <div class="container py-5">
       
     <!--nav bar-->
@@ -125,7 +99,7 @@ $conn->close();
               <h5 class="my-3"><?php echo $name ?></h5>
               <p class="text-muted mb-1"><?php echo $pos ?></p>
               <div class="d-flex justify-content-center mb-2">
-                  <button type="button" class="btn btn-primary">Edit Profile</button>
+                  <a href="editProfile.php"><button type="button" class="btn btn-primary">Edit Profile</button></a>
               </div>
             </div>
           </div>

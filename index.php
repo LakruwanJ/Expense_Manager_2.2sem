@@ -70,7 +70,7 @@ if ($conn->connect_error) {die("Connection failed: " . $conn->connect_error);}
           <div class="position-sticky">
             <div class="list-group list-group-flush mx-3 mt-4">
                 <!--item 1-->
-                <a class="list-group-item list-group-item-action py-2 ripple" data-bs-toggle="list" href="#Dashboard"><i class="fas fa-gauge-high fa-fw me-3"></i><span>Dashboard</span></a>
+                <!--<a class="list-group-item list-group-item-action py-2 ripple" data-bs-toggle="list" href="#Dashboard"><i class="fas fa-gauge-high fa-fw me-3"></i><span>Dashboard</span></a>-->
                 <a class="list-group-item list-group-item-action py-2 ripple" data-bs-toggle="list" href="#Dashboardf"><i class="fas fa-gauge-high fa-fw me-3"></i><span>Dashboard_</span></a>
                 <!--item 1-->
                 <a class="list-group-item list-group-item-action py-2 ripple" data-bs-toggle="list" href="#proposal"><i class="fas fa-file-alt fa-fw me-3"></i><span>Proposals</span></a>

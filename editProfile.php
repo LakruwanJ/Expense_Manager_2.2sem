@@ -115,7 +115,7 @@ and open the template in the editor.
             </div>
             <div class="row" style="padding-top: 20px;">
                 <div class="d-grid gap-2 col-6 mx-auto">
-                    <input class="btn btn-primary" type="button" type="submit" value="Save " />
+                    <a href="index.php>"<input class="btn btn-primary" type="button" type="submit" value="Save " /></a>
                 </div><br
             </div>
             
