@@ -38,10 +38,7 @@
     <div class="col-lg-10">
         <nav class="bg-light rounded-3 p-3 mb-4">
           <ol class="breadcrumb mb-0">
-            <li>Home</li>
-            
-            <li>&nbsp;&nbsp; > &nbsp;&nbsp;</li>
-            <li>Proposals</li>
+            <li>Pending Proposals</li>
             
           </ol>
         </nav>
