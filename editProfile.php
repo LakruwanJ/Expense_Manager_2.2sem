@@ -87,7 +87,7 @@ and open the template in the editor.
                                     </div>
                                     <div class="row">
                                         <div class="col-sm-4"><p class="mb-0">ID</p></div>
-                                        <div class="col-sm-8"><input type="text" name="id" id="form3Example3" class="form-control form-control-lg" placeholder="Enter your User Name" />
+                                        <div class="col-sm-8"><input type="text" name="id" id="form3Example3" class="form-control form-control-lg" placeholder="Enter your User Name" disabled=""/>
                                     </div><hr style="opacity: .05">
                                     <div class="row">
                                         <div class="col-sm-4"><p class="mb-0">Full Name</p></div>
