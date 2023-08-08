@@ -2,6 +2,8 @@
 
 namespace Classes;
 
+session_start();
+
 use PDOException;
 use PDO;
 use Classes\DbConnector;
@@ -10,20 +12,21 @@ require 'DbConnector.php';
 
 
 
-//put your code here
-$Err = "";
-$uname = $pass = "";
+$Err = $Err2 = $Err3 = $Err5 = "";
+$uname = $pass = $u_id = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
     if (empty($_POST["username"])) {
+        $Err2 = " <p style='color:red'>* User Name Is required </p>";
         $Err = "2";
     } else {
         $uname = trim($_POST["username"]);
     }
 
     if (empty($_POST["password"])) {
+        $Err3 = " <p style='color:red'>* Password Is required </p>";
         $Err = " 3";
     } else {
         $pass = trim($_POST["password"]);
@@ -38,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $con = $dbcon->getConnection();
 
         $sql = " SELECT password FROM users WHERE username='$uname' ";
-        echo $sql;
+
 
         $pstmt = $con->prepare($sql);
         $pstmt->execute();
@@ -46,46 +49,41 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         foreach ($rs as $value) {
             $pword = $value->password;
         }
+        if ($pword != null) {
+            if ($pass == $pword) {
+                $sql = " SELECT * FROM users WHERE username='$uname' ";
 
-        echo "$pword";
+                $pstmt = $con->prepare($sql);
+                $pstmt->execute();
+                $rs = $pstmt->fetchAll(PDO::FETCH_OBJ);
+                foreach ($rs as $value) {
+                    $fullName = $value->FullName;
+                    $possision = $value->Possion;
+                    $email = $value->email;
+                    $PhoneNumOffice = $value->PhoneNumOffice;
+                    $PhoneNumPersonal = $value->PhoneNumPersonal;
+                    $u_id = $value->id;
+                    // sessio variable
+                    $_SESSION["u_id"] = $u_id;
+                }
 
-        if ($pass == $pword) {
-            $sql = " SELECT * FROM users WHERE username='$uname' ";
+                echo "$fullName";
 
-            $pstmt = $con->prepare($sql);
-            $pstmt->execute();
-            $rs = $pstmt->fetchAll(PDO::FETCH_OBJ);
-            foreach ($rs as $value) {
-               $fullName =$value->FullName;
-               $possision =$value->Possion;
-               $email =$value->email;
-               $PhoneNumOffice =$value->PhoneNumOffice;
-               $PhoneNumPersonal =$value->PhoneNumPersonal;
-            }
-            
-            echo "$fullName";
-            
-            if ($fullName== NULL && $email == NULL && $PhoneNumOffice== 0 && $PhoneNumPersonal == 0) {
-                header("Location: ../editProfile.php");
-                
-            } else if ($possision== "Manager") {
-                 header("Location: ../DashMng.php");
-                
-                
-            }else if ($possision== "FTmember") {
-                 header("Location: ../DashFTM.php");
-                
-                
-            }else if ($possision== "emp") {
-                 header("Location: ../DashEmp.php");
-                
-                
+                if ($fullName == NULL && $email == NULL && $PhoneNumOffice == 0 && $PhoneNumPersonal == 0) {
+                    header("Location: editProfile.php");
+                } else if ($possision == "Manager") {
+                    header("Location: DashMng.php");
+                } else if ($possision == "FTmember") {
+                    header("Location: DashFTM.php");
+                } else if ($possision == "emp") {
+                    header("Location: DashEmp.php");
+                } else {
+                    $Err = "6";
+                }
             } else {
-                $Err="6";
+                $Err5 = " <p style='color:red'>* User Name or Password incorrect </p>";
+                $Err = "5";
             }
-            
-        } else {
-            $Err = "5";
         }
     } else {
         $Err = "4";
