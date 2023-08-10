@@ -64,7 +64,7 @@ include 'Classes/Login.php';
                                         <!-- User Name -->
                                         <div class="mb-4">
                                             <label for="validationDefault03" class="form-label">User Name</label>
-                                            <input type="text" class="form-control"   placeholder="Enter User Name" name="username" ><!-- if you want change this to email-->
+                                            <input type="text" class="form-control"   placeholder="Enter User Name" name="Username" >
                                            <?php echo  $Err2; ?>  
                                         </div>
 

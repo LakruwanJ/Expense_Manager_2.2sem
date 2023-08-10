@@ -14,15 +14,15 @@ require 'DbConnector.php';
 
 $Err = $Err2 = $Err3 = $Err5 = "";
 $uname = $pass = $u_id = $position="";
-
+$_SESSION['logged'] = FALSE;
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
-    if (empty($_POST["username"])) { //email
+    if (empty($_POST["Username"])) { 
         $Err2 = " <p style='color:red'>* User Name Is required </p>";
         $Err = "2";
     } else {
-        $uname = trim($_POST["username"]);
+        $uname = trim($_POST["Username"]);
     }
 
     if (empty($_POST["password"])) {
@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $dbcon = new DbConnector();
         $con = $dbcon->getConnection();
 
-        $sql = " SELECT password FROM users WHERE username='$uname' ";//employee
+        $sql = " SELECT password FROM employee WHERE Username='$uname' ";//employee
 
 
         $pstmt = $con->prepare($sql);
@@ -51,25 +51,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
         if ($pword != null) {
             if ($pass == $pword) {
-                $sql = " SELECT * FROM users WHERE username='$uname' ";//employee
+                $sql = " SELECT * FROM employee WHERE Username='$uname' ";//employee
 
                 $pstmt = $con->prepare($sql);
                 $pstmt->execute();
                 $rs = $pstmt->fetchAll(PDO::FETCH_OBJ);
                 foreach ($rs as $value) {
                     $fullName = $value->FullName;
-                    $possision = $value->Possion;
+                    $possision = $value->Type;
                     $email = $value->email;
                     $PhoneNumOffice = $value->PhoneNumOffice;
                     $PhoneNumPersonal = $value->PhoneNumPersonal;
-                    $u_id = $value->id;
-                    $ptype = $value->Type;
+                    $u_id = $value->EmpID;
+                    $Type = $value->Type;
+                    $uname = $value->Username;
+                 
                     // sessio variable
+                    $_SESSION['logged'] = TRUE;
                     $_SESSION["u_id"] = $u_id;
-                    $_SESSION["ptype"] = $ptype;
+                    $_SESSION["type"] = $Type;
+                    $_SESSION["Username"] = $uname;
+                   
                 }
 
-                echo "$fullName";
+                //echo "$fullName";
 
                 if ($fullName == NULL && $email == NULL && $PhoneNumOffice == 0 && $PhoneNumPersonal == 0) { //employee table doesn't have fullName column 
                     header("Location: editProfile.php");

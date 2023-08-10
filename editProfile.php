@@ -56,7 +56,7 @@ and open the template in the editor.
                     <div class="col-lg-1"></div> 
                 </div>
 
-                <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
+                <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" enctype="multipart/form-data" class="was-validation" novalidate>
                     
                     <!--change password-->
                     <div class="row">
@@ -69,13 +69,13 @@ and open the template in the editor.
                                     </div>
                                     <div class="row">
                                         <div class="col-sm-4"><p class="mb-0">Enter password</p></div>
-                                        <div class="col-sm-8"><input type="password" name="password" id="form3Example3" class="form-control form-control-lg" placeholder="Enter your password" /><br></div>  
+                                        <div class="col-sm-8"><input type="password" name="password" id="form3Example3" class="form-control form-control-lg" placeholder="Enter your password" required/><br></div>  
                                         <?php echo $passErr; 
                                         ?>
                                     </div>
                                     <div class="row">
                                         <div class="col-sm-4"><p class="mb-0">Confirm password</p></div>
-                                        <div class="col-sm-8"><input type="password" name="CmPassword" id="form3Example3" class="form-control form-control-lg" placeholder="Confirm your password" /><br></div>
+                                        <div class="col-sm-8"><input type="password" name="CmPassword" id="form3Example3" class="form-control form-control-lg" placeholder="Confirm your password" required/><br></div>
                                         <?php echo $confirm_passErr; 
                                         echo $notMatched_Err;
                                         echo $SpassErr;?>
@@ -98,16 +98,16 @@ and open the template in the editor.
                                     </div>
                                     <div class="row">
                                         <div class="col-sm-4"><p class="mb-0">User Name</p></div>
-                                        <div class="col-sm-8"><input type="text" name="UserName" id="form3Example3" class="form-control form-control-lg" placeholder="<?php echo $name ?>" disabled=""/></div>
+                                        <div class="col-sm-8"><input type="text" name="UserName" id="form3Example3" class="form-control form-control-lg" placeholder="<?php echo $name ?>" disabled /></div>
                                     </div><hr style="opacity: .05">
                                     <div class="row">
                                         <div class="col-sm-4"><p class="mb-0">Full Name</p></div>
-                                        <div class="col-sm-8"><input type="text" name="FullName" id="form3Example3" class="form-control form-control-lg" placeholder="Enter your Full Name" /></div>
+                                        <div class="col-sm-8"><input type="text" name="FullName" id="form3Example3" class="form-control form-control-lg" placeholder="Enter your Full Name" required/></div>
                                     </div><?php echo $nameErr;?><hr style="opacity: .05">
                                     
                                     <div class="row">
                                         <div class="col-sm-4"><p class="mb-0">Add profile photo</p></div>
-                                        <div class="col-sm-8"><input class="form-control" name="photo" type="file" id="formFileMultiple" multiple /></div>
+                                        <div class="col-sm-8"><input class="form-control" name="photo" type="file" id="formFileMultiple" multiple required/></div>
                                     </div><?php echo $photoErr;
                                     echo $pE1;
                                     echo $pE2;
@@ -121,18 +121,18 @@ and open the template in the editor.
                                     </div><hr style="opacity: .05">
                                     <div class="row">
                                         <div class="col-sm-4"><p class="mb-0">Email</p></div>
-                                        <div class="col-sm-8"><input type="text" name="email" id="form3Example3" class="form-control form-control-lg" placeholder="Enter your Email" /></div>
+                                        <div class="col-sm-8"><input type="email" name="email" id="form3Example3" class="form-control form-control-lg" placeholder="Enter your Email" required/></div>
                                     </div><?php echo $emailErr;
                                     echo $emailVErr;?><hr style="opacity: .05">
                                     <div class="row">
                                         <div class="col-sm-4"><p class="mb-0">Phone Number(Office)</p></div>
-                                        <div class="col-sm-8"><input type="text" name="phNo" id="form3Example3" class="form-control form-control-lg" placeholder="Enter your office Number" /></div>
+                                        <div class="col-sm-8"><input type="number" name="phNo" id="form3Example3" class="form-control form-control-lg" placeholder="Enter your office Number" required /></div>
                                     </div><?php echo $phNoErr;
                                     echo $phNoCErr;
                                     ?><hr style="opacity: .05">
                                     <div class="row">
                                         <div class="col-sm-4"><p class="mb-0">Phone Number(Personal)</p></div>
-                                        <div class="col-sm-8"><input type="text" name="PphNo" id="form3Example3" class="form-control form-control-lg" placeholder="Enter your mobile Number" /></div>
+                                        <div class="col-sm-8"><input type="number" name="PphNo" id="form3Example3" class="form-control form-control-lg" placeholder="Enter your mobile Number" required/></div>
                                     </div><?php echo  $PphNoErr;
                                     echo  $PphNoCErr;?>
                                     <div class="row" style="padding-top: 20px;">
