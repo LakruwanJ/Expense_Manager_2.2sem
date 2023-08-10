@@ -34,8 +34,8 @@ class EditPro {
         // create prepare statement
         $pstmt = $con->query($sql_1);
         while ($row = $pstmt->fetch()) {
-            //$rs = $row['Description'];
-            return TRUE;
+            $rs = $row['Description'];
+            return $rs;
         }
     }
 
@@ -80,8 +80,8 @@ class EditPro {
         // create prepare statement
         $pstmt = $con->query($sql_1);
         while ($row = $pstmt->fetch()) {
-            //$rs = $row['DescriptionF'];
-            return TRUE;
+            $rs = $row['DescriptionF'];
+            return $rs;
         }
     }
 
@@ -96,8 +96,8 @@ class EditPro {
         // create prepare statement
         $pstmt = $con->query($sql_1);
         while ($row = $pstmt->fetch()) {
-            //$rs = $row['DescriptionM'];
-            return TRUE;
+            $rs = $row['DescriptionM'];
+            return $rs;
         }
     }
 
@@ -108,15 +108,13 @@ class EditPro {
 
         //$want_id = "p002";
         if ($pssn == "manager") {
-            $sql = "UPDATE proposalmodify SET DescriptionM = '{$cmmt}' WHERE ProID = '{$this->want_id}'";
-            $result = $con->query($sql);
-            while ($row = $result->fetch()){
+            $sql = "UPDATE proposalmodify SET DescriptionM ='".$cmmt."' WHERE ProID = '{$this->want_id}'";
+            if ($con->exec($sql) !== FALSE){
                 return TRUE;
             }
         }elseif ($pssn == "finance team") {
-            $sql = "UPDATE proposalmodify SET DescriptionF = '{$cmmt}' WHERE ProID = '{$this->want_id}'";
-            $result = $con->query($sql);
-            while ($row = $result->fetch()){
+            $sql = "UPDATE proposalmodify SET DescriptionF ='".$cmmt."' WHERE ProID = '{$this->want_id}'";
+            if ($con->exec($sql) !== FALSE){
                 return TRUE;
             }
         }
@@ -135,8 +133,8 @@ class EditPro {
         // create prepare statement
         $pstmt = $con->query($sql_1);
         while ($row = $pstmt->fetch()) {
-            //$rs = $row['Username'];
-            return TRUE;
+            $rs = $row['Username'];
+            return $rs;
         }
     }
 
@@ -151,8 +149,8 @@ class EditPro {
         // create prepare statement
         $pstmt = $con->query($sql_1);
         while ($row = $pstmt->fetch()) {
-            //$rs = $row['Subject'];
-            return TRUE;
+            $rs = $row['Subject'];
+            return $rs;
         }
     }
 
@@ -167,8 +165,8 @@ class EditPro {
         // create prepare statement
         $pstmt = $con->query($sql_1);
         while ($row = $pstmt->fetch()) {
-            //$rs = $row['Date'];
-            return TRUE;
+            $rs = $row['Date'];
+            return $rs;
         }
     }
 
@@ -183,8 +181,8 @@ class EditPro {
         // create prepare statement
         $pstmt = $con->query($sql_1);
         while ($row = $pstmt->fetch()) {
-            //$rs = $row['Category'];
-            return TRUE;
+            $rs = $row['Category'];
+            return $rs;
         }
     }
 
@@ -199,8 +197,8 @@ class EditPro {
         // create prepare statement
         $pstmt = $con->query($sql_1);
         while ($row = $pstmt->fetch()) {
-            //$rs = $row['Amount'];
-            return TRUE;
+            $rs = $row['Amount'];
+            return $rs;
         }
     }
 
@@ -215,8 +213,8 @@ class EditPro {
         // create prepare statement
         $pstmt = $con->query($sql_1);
         while ($row = $pstmt->fetch()) {
-            //$rs = $row['Date'];
-            return TRUE;
+            $rs = $row['Date'];
+            return $rs;
         }
     }
 
@@ -231,8 +229,8 @@ class EditPro {
         // create prepare statement
         $pstmt = $con->query($sql_1);
         while ($row = $pstmt->fetch()) {
-            //$rs = $row['Username'];
-            return TRUE;
+            $rs = $row['Username'];
+            return $rs;
         }
     }
 
@@ -247,8 +245,8 @@ class EditPro {
         // create prepare statement
         $pstmt = $con->query($sql_1);
         while ($row = $pstmt->fetch()) {
-            //$rs = $row['Date'];
-            return TRUE;
+            $rs = $row['Date'];
+            return $rs;
         }
     }
 
@@ -263,8 +261,8 @@ class EditPro {
         // create prepare statement
         $pstmt = $con->query($sql_1);
         while ($row = $pstmt->fetch()) {
-            //$rs = $row['Date'];
-            return TRUE;
+            $rs = $row['Date'];
+            return $rs;
         }
     }
 
@@ -280,8 +278,8 @@ class EditPro {
        
         $pstmt = $con->query($sql_1);
         while ($row = $pstmt->fetch()) {
-           // $rs = $row['Username'];
-            return TRUE;
+            $rs = $row['Username'];
+            return $rs;
         }
     }
     

@@ -5,8 +5,11 @@ require 'Classes/EditPro.php';
 $pro_obj = new Classes\EditPro();
 
 //get position type using login session 
-$position_type = $_SESSION['ptype'];
+//$position_type = $_SESSION['ptype'];
+$position_type = "manager";
 $status = $pro_obj->is_rejected();
+
+$is_cmmt = FALSE;
 
 if (isset($_GET)) {
     $pro_obj->set_id($_GET['w_id']);
@@ -17,23 +20,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['aprv'])) {
         $ap = $pro_obj->approve();
     }
-    
+
     if (isset($_POST['rjct'])) {
-        $re= $pro_obj->approve();
+        $re = $pro_obj->approve();
         //$re = TRUE;
     }
-    
+
     if (isset($_POST['add_comment'])) {
         $comment = $_POST['comment'];
         $pro_obj->addComment($comment);
     }
-    
-    if (isset($_POST['cmmt'])) {
-        $cmmt = filter_var($_POST['cmmt'], FILTER_SANITIZE_STRING);
-        $is_cmmt = $pro_obj->Addcomment($cmmt,$position_type);
+    if (isset($_POST['save_cmmt'])) {
+        $message = $_POST['cmmt'];
+        $cmmt = filter_var($message, FILTER_SANITIZE_STRING);
+        //echo $cmmt;
+        $is_cmmt = $pro_obj->Addcomment($cmmt, $position_type);
     }
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -134,59 +137,59 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                     <p><strong>Date:</strong> </p>
                                     <p>-<?php echo $pro_obj->Date() ?></p><br>
 
-                                    <?php if ($position_type == "user") { ?>
-                                    <button class="btn btn-success disabled">Status - </button>
-                                    
-                                    <!--<button class="btn btn-success">Add Comment</button>-->
-                                    <?php }elseif (($position_type == "manager") || ($position_type == "finance team") ) { ?>
-                                    <!-- Button trigger modal -->
-                                    <button type="submit" class="btn btn-success" data-mdb-toggle="modal" data-mdb-target="#exampleModal" name="cmmt">
-                                        Add Comment
-                                    </button>
+                                        <?php if ($position_type == "user") { ?>
+                                        <button class="btn btn-success disabled">Status - </button>
 
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Enter Your Comment</h5>
-                                                    <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <div class="form-outline">
-                                                        <textarea class="form-control" id="textAreaExample" rows="4"></textarea>
-                                                        <label class="form-label" for="textAreaExample">Message</label>
+                                        <!--<button class="btn btn-success">Add Comment</button>-->
+                                        <?php }if (($position_type == "manager") || ($position_type == "finance team")) { ?>
+                                        <!-- Button trigger modal -->
+                                        <button type="button" class="btn btn-success" data-mdb-toggle="modal" data-mdb-target="#exampleModal" >
+                                            Add Comment
+                                        </button>
+
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">Enter Your Comment</h5>
+                                                        <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
                                                     </div>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Close</button>
-                                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                                    <div class="modal-body">
+                                                        <div class="form-outline">
+                                                            <textarea class="form-control" rows="4" name="cmmt"></textarea>
+                                                            <label class="form-label" for="textAreaExample">Message</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Close</button>
+                                                        <button type="submit" class="btn btn-primary" name="save_cmmt">Save changes</button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <!-- end cmmt btton -->
-                                    <?php }elseif (($position_type == "user") && ($status != FALSE)) { ?>
-                                    <button class="btn btn-success" name="edit">Edit</button>
-                                    <?php }elseif ($position_type == "manager") { ?>
-                                    <button class="btn btn-success" name="aprv">Approve</button>
-                                    <button class="btn btn-danger" name="rjct">Reject</button>
-                                    <?php } ?>
-                                    <?php if ($ap) { ?>
+                                        <!-- end cmmt btton -->
+                                        <?php } if (($position_type == "user") && ($status != FALSE)) { ?>
+                                        <button class="btn btn-success" name="edit">Edit</button>
+                                        <?php } if ($position_type == "manager") { ?>
+                                        <button class="btn btn-success" name="aprv">Approve</button>
+                                        <button class="btn btn-danger" name="rjct">Reject</button>
+                                        <?php } ?>
+                                        <?php if ($ap) { ?>
                                         <div class="alert alert-success mt-2" role="alert">
                                             Successfully Approved!
                                         </div>
-                                    <?php } ?>
-                                    <?php if ($re) { ?>
+                                        <?php } ?>
+                                        <?php if ($re) { ?>
                                         <div class="alert alert-warning" role="alert">
                                             Check Again!
                                         </div>
-                                    <?php } ?>
-                                    <?php if ($is_cmmt != FALSE) {?>
+                                        <?php } ?>
+                                        <?php if ($is_cmmt !== FALSE) { ?>
                                         <div class="alert alert-success mt-2" role="alert">
                                             Successfully Comment Added!
                                         </div>
-                                    <?php } ?>
+                                        <?php } ?>
 
                                 </div>
                         </form>

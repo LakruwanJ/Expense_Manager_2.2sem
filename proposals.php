@@ -88,8 +88,6 @@ $exicute = $con->query($sql);
                                 </div>
                                 <?php } ?>
                             </div>
-
-
                         </div>
                         <div class="col-lg-1"></div>    
 
