@@ -13,7 +13,7 @@ require 'DbConnector.php';
 
 
 $Err = $Err2 = $Err3 = $Err5 = "";
-$uname = $pass = $u_id = "";
+$uname = $pass = $u_id = $position="";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $dbcon = new DbConnector();
         $con = $dbcon->getConnection();
 
-        $sql = " SELECT password FROM users WHERE username='$uname' ";
+        $sql = " SELECT password FROM users WHERE username='$uname' ";//employee
 
 
         $pstmt = $con->prepare($sql);
@@ -51,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
         if ($pword != null) {
             if ($pass == $pword) {
-                $sql = " SELECT * FROM users WHERE username='$uname' ";
+                $sql = " SELECT * FROM users WHERE username='$uname' ";//employee
 
                 $pstmt = $con->prepare($sql);
                 $pstmt->execute();
@@ -63,8 +63,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $PhoneNumOffice = $value->PhoneNumOffice;
                     $PhoneNumPersonal = $value->PhoneNumPersonal;
                     $u_id = $value->id;
+                    $ptype = $value->Type;
                     // sessio variable
                     $_SESSION["u_id"] = $u_id;
+                    $_SESSION["ptype"] = $ptype;
                 }
 
                 echo "$fullName";
