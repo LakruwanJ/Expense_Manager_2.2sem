@@ -15,9 +15,6 @@ and open the template in the editor.
         <script src="index.js"></script>
         <script src="../assets/js/color-modes.js"></script>
         <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/dashboard/" />
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
-        <link src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-
         <style>
             body::-webkit-scrollbar {
                 display: none;
@@ -58,15 +55,22 @@ and open the template in the editor.
     <body>
         <div class="container">
             <div class="row">
-                <div class="col-12 mb-4">
-                    <div class="container text-center mt-5">         
-                        <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#AddFeed" style="width:80%; height: 50px;"><div class="row"><i class="fa-thin fa-plus fa-lg" style="color: #3aa0df;">  Add FeedBack</i></div></button>
+                <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
+                    <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg ProposalCard" style=" background-image: url('https://wallpapersafari.com/w/0mZbFu'); background-position: center; object-fit: fill; "  >
+                        <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+                            <h4 class="pt-6 mt-2 mb-6 display-8 lh-1 fw-bold aprovedHedding">Add FeedBack</h4>
+                            <ul class="d-flex list-unstyled mt-auto">
+                                <li class="d-flex align-items-center mt-3">
+                                    <button class="btn btn-danger align-items-left" type="button" data-bs-toggle="modal" data-bs-target="#Remove">Add</button>                
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div> 
             </div> 
 
             <!-- Modal for Remove Member -->
-            <div class="modal fade" id="AddFeed" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+            <div class="modal fade" id="Remove" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" >
                     <div class="modal-content w-150">
                         <div class="modal-header">
@@ -83,7 +87,7 @@ and open the template in the editor.
                                         </div>
                                         <div class="card">
                                             <span class="input-group-text" id="basic-addon3">FeedBack</span>
-                                            <input type="text" placeholder="Send a feedback" class="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4">
+                                            <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4">
                                         </div>
                                     </div>
                                 </div>
@@ -174,9 +178,6 @@ and open the template in the editor.
 
             // Call the function to display feedback cards when the page loads
             document.addEventListener("DOMContentLoaded", displayFeedbackCards);
-
-
-            
         </script>
     </body>
 </html>
