@@ -69,7 +69,7 @@ and open the template in the editor.
                                     </div>
                                     <div class="row">
                                         <div class="col-sm-4"><p class="mb-0">Enter password</p></div>
-                                        <div class="col-sm-8"><input type="password" name="password" id="form3Example3" class="form-control form-control-lg" placeholder="Enter your password" /><br></div>
+                                        <div class="col-sm-8"><input type="password" name="password" id="form3Example3" class="form-control form-control-lg" placeholder="Enter your password" /><br></div>  
                                         <?php echo $passErr; 
                                         ?>
                                     </div>

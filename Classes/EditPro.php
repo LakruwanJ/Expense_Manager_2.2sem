@@ -17,7 +17,7 @@ if ($_SESSION["u_id"]) {
     //echo "Test clicked";
     $con_obj = new DbConnector();
     $con = $con_obj->getConnection();
-    $sql = "SELECT username, Possion FROM users WHERE id = '{$_SESSION['u_id']}' LIMIT 1";
+    $sql = "SELECT username, Possion FROM users WHERE id = '{$_SESSION['u_id']}' LIMIT 1"; //employee table
     $result = $con->query($sql);
 
 
@@ -50,7 +50,7 @@ if (isset($_POST["save"])) {
         $notMatched = trim($_POST["CmPassword"]);
     }
 
-    if (empty($_POST["FullName"])) {
+    if (empty($_POST["FullName"])) { //employee table doesn't have fullNme column
         $nameErr = " <p style='color:red'>* Full Name Is required </p>";
     } else {
         $Fname = trim($_POST["FullName"]);
@@ -169,24 +169,6 @@ if (isset($_POST["save"])) {
     }
 
 
-
-    /* $sql = " SELECT * FROM users WHERE username='$uname' ";
-      $existing_user = mysqli_query($conn, $sql);
-
-      $row_count = mysqli_num_rows($existing_user);
-
-      if ($row_count > 0) {
-      $signup_err = "  <script> alert('Sorry! This username is already registered.') </script> ";
-      } else if ($possision == "Manager") {
-      header("Location: DashMng.php");
-      } else if ($possision == "FTmember") {
-      header("Location: DashFTM.php");
-      } else if ($possision == "emp") {
-      header("Location: DashEmp.php");
-      } else {
-      $Err = "6";
-      }
-      } */
 }
     
     

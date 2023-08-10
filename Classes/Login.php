@@ -18,7 +18,7 @@ $uname = $pass = $u_id = $position="";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
-    if (empty($_POST["username"])) {
+    if (empty($_POST["username"])) { //email
         $Err2 = " <p style='color:red'>* User Name Is required </p>";
         $Err = "2";
     } else {
@@ -71,7 +71,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 echo "$fullName";
 
-                if ($fullName == NULL && $email == NULL && $PhoneNumOffice == 0 && $PhoneNumPersonal == 0) {
+                if ($fullName == NULL && $email == NULL && $PhoneNumOffice == 0 && $PhoneNumPersonal == 0) { //employee table doesn't have fullName column 
                     header("Location: editProfile.php");
                 } else if ($possision == "Manager") {
                     header("Location: DashMng.php");
