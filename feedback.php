@@ -7,6 +7,7 @@ and open the template in the editor.
 
 <?php
 require_once 'Classes/Feedbackctrl.php';
+$currentDate = date("Y-m-d ");
 ?>
 <html>
     <head>
@@ -93,7 +94,7 @@ require_once 'Classes/Feedbackctrl.php';
                                                 <span class="input-group-text" id="basic-addon3">FeedBack</span>
                                                 <input type="text" name="FEED" placeholder="Type your feedback" class="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4">
                                             </div>
-                                            <h6>Date: <?php echo $currentDateTime ?></h6>
+                                            <h6>Date: <?php echo $currentDate ?></h6>
                                         </div>
                                     </div>
 
@@ -113,6 +114,7 @@ require_once 'Classes/Feedbackctrl.php';
             echo $FeedErr;
             echo $Feed;
             ?>
+                                
             <!-- Feedback Cards Section -->
             <?php while ($lise != NULL){?>
             <div class="alert alert-info m-4" role="alert">
@@ -121,79 +123,11 @@ require_once 'Classes/Feedbackctrl.php';
                 <p class="fw-light text-muted mx-3"><?php echo $lise['date']; ?></p>
             </div>
             <?php } ?>
-            <!-- Modal for Remove Member -->
-            <div class="modal fade" id="Remove" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
-                <!-- Add your modal content here -->
-            </div>
-            <!-- Modal end -->
+          
 
-            <?php
-            // put your code here
-            ?>
+            
         </div>
 
-        <script>
-
-            const feedbacks = [
-                {
-                    username: "John Doe",
-                    feedback: "This is a great website!",
-                    date: "2023-08-06"
-                },
-                {
-                    username: "Jane Smith",
-                    feedback: "Awesome work!",
-                    date: "2023-08-05"
-                },
-            ];
-
-            // Function to create a single feedback card
-            function createFeedbackCard(username, feedback, date) {
-                const card = document.createElement("div");
-                card.classList.add("card");
-
-                const cardBody = document.createElement("div");
-                cardBody.classList.add("card-body");
-
-                const usernameElement = document.createElement("h5");
-                usernameElement.classList.add("card-title");
-                usernameElement.textContent = username;
-
-                const feedbackElement = document.createElement("p");
-                feedbackElement.classList.add("card-text");
-                feedbackElement.textContent = feedback;
-
-                const dateElement = document.createElement("p");
-                dateElement.classList.add("card-text");
-                dateElement.textContent = "Date: " + date;
-
-                cardBody.appendChild(usernameElement);
-                cardBody.appendChild(feedbackElement);
-                cardBody.appendChild(dateElement);
-                card.appendChild(cardBody);
-
-                return card;
-            }
-
-            // Function to display all feedback cards
-            function displayFeedbackCards() {
-                const feedbackCardsSection = document.getElementById("feedbackCardsSection");
-
-                // Clear existing cards (if any)
-                feedbackCardsSection.innerHTML = "";
-
-                // Create and append cards for each feedback
-                feedbacks.forEach((feedback) => {
-                    const card = createFeedbackCard(feedback.username, feedback.feedback, feedback.date);
-                    feedbackCardsSection.appendChild(card);
-                });
-            }
-
-            // Call the function to display feedback cards when the page loads
-            document.addEventListener("DOMContentLoaded", displayFeedbackCards);
-
-
-
-        </script>
+        
     </body>
 </html>

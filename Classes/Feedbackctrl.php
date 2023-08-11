@@ -54,10 +54,10 @@ if (isset($_POST["add"])) {
         $dbcon = new DbConnector();
         $con = $dbcon->getConnection();
 
-        $currentDateTime = date("Y-m-d");
+        $currentDate = date("Y-m-d");
+        
 
-
-        $sql = 'INSERT INTO feedback (EmpID,Msj, date) VALUES ("' . $uid . '","' . trim($_POST["FEED"]) . '","' . $currentDateTime . '")';
+        $sql = 'INSERT INTO feedback (EmpID,Msj, date) VALUES ("' . $uid . '","' . trim($_POST["FEED"]) . '","' . $currentDate . '")';
 
 
         if ($con->exec($sql) !== FALSE) {
