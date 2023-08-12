@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 
 <?php
-require 'Classes/DbConnector.php';
+$EmpID = '1';
 
-use Classes\DbConnector;
-
+require_once 'Classes/DbConnector.php';
 $dbcon = new Classes\DbConnector();
-$conn = $dbcon->getConnection();
-//
+
+$phpself = $_SERVER['PHP_SELF'];
 ?>
 
 <html>
@@ -84,19 +83,63 @@ $conn = $dbcon->getConnection();
                     <!-- Notification dropdown -->
                     <li class="nav-item dropdown" style="padding-top: 7px">                    
                         <a class="nav-link dropdown-toggle hidden-arrow" role="button" data-bs-toggle="dropdown" aria-expanded="true">
-                            <i class="fas fa-bell"></i><span class="badge rounded-pill badge-notification bg-danger">1</span>
+                            <?php
+                            $con = $dbcon->getConnection();
+                            $query = "SELECT * FROM notification WHERE (Nto=" . $EmpID . " OR Nto='AllF') AND Status='0'";
+                            $pstmt = $con->prepare($query);
+                            $pstmt->execute();
+                            ?>
+                            <i class="fas fa-bell"></i><span class="badge rounded-pill badge-notification bg-danger"><?php echo $pstmt->rowCount();?></span>
                         </a>
-                        <ul  class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="#">Notification 1</a></li>
-                            <li><a class="dropdown-item" href="#">Notification 2</a></li>
-                            <li><a class="dropdown-item" href="#">Notification 3</a></li>
+                        <ul  class="dropdown-menu dropdown-menu-end p-2" style="width: 350px">
+                            <li><b>Notification for you</b><hr></li>
+                            <?php
+                            $query = "SELECT * FROM notification WHERE Nto=" . $EmpID . " OR Nto='AllF' ORDER BY Nid DESC LIMIT 10";
+                            $pstmt = $con->prepare($query);
+                            $pstmt->execute();
+                            $rs = $pstmt->fetchAll(PDO::FETCH_OBJ);
+                            foreach ($rs as $valueEmp) {
+                                $sts = $valueEmp->Status;
+                                $clr = "#c2eafc";
+                                if ($sts === "1") {
+                                    $clr = "#ffffff";
+                                }
+                                ?>
+                                <a href="Classes/ChangeNoti.php?m=<?php echo $valueEmp->Nid ?>&url=<?php echo $phpself; ?>"><li><div class="row">
+                                            <div class="col">
+                                                <div class="card p-1" style="background-color: <?php echo$clr ?>;"><?php echo $valueEmp->Msj ?><br><?php echo "$valueEmp->date $valueEmp->Time" ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li></a><hr class="p-0 m-0">
+                                <?php
+                            }
+                            ?>
+
+                            <li><a>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="card m-1 p-1 mb-2">
+                                                <div class="text-center">
+                                                    <h6>See All</h6>
+                                                </div>
+                                            </div></div>            
+                                    </div></a></li>
                         </ul>
                     </li>
                     <li>&nbsp;&nbsp;&nbsp;&nbsp;</li>
-
+<?php
+                    $query = "SELECT * FROM employee WHERE EmpID='" . $EmpID . "'";
+                    $pstmt = $con->prepare($query);
+                    $pstmt->execute();
+                    $rs = $pstmt->fetchAll(PDO::FETCH_OBJ);
+                    foreach ($rs as $valueEmp) {
+                        $name = $valueEmp->Username;
+                        $type = $valueEmp->Type;
+                    }
+                    ?>
                     <!--profile-->
-                    <li style="padding-top: 13px">
-                        Username&nbsp;</li>
+                    <li style="padding-top: 13px"><?php echo $name; ?>&nbsp;</li>
                     <li class="nav-item dropdown" aria-labelledby="navbarDropdownMenuLink">
                         <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="true">
                             <img src="Images/propic.jpg" class="rounded-circle" height="40" alt="ProPic" loading="lazy" />
@@ -108,7 +151,7 @@ $conn = $dbcon->getConnection();
                             <!-- Scrollable modal -->
                             <div class="modal-dialog modal-dialog-scrollable" id="teamm">
                             </div>
-                            <li><a class="dropdown-item"  data-bs-toggle="list" href="#"><i class="fas fa-circle fa-xs" style="color: #00cd01"></i><span>&nbsp;&nbsp;&nbsp;Post</span></a></li>
+                            <li><a class="dropdown-item"  data-bs-toggle="list" href="#"><i class="fas fa-circle fa-xs" style="color: #00cd01"></i><span>&nbsp;&nbsp;&nbsp;<?php echo $type; ?></span></a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item"  data-bs-toggle="list" href="#"><i class="fas fa-right-from-bracket"></i><span>&nbsp;&nbsp;&nbsp;Logout</span></a></li>
                         </ul>
@@ -141,7 +184,7 @@ $conn = $dbcon->getConnection();
                         <iframe src="Our_team.php" class="no-scrollbar"></iframe>
                     </div>
 
-                    <div class="tab-pane fade <?php if ($activeTab === "feed") echo "show active"; ?>" id="reports" style="height: 1000px;">
+                    <div class="tab-pane fade <?php if ($activeTab === "feed") echo "show active"; ?>" id="feed" style="height: 1000px;">
                         <iframe src="feedback.php"></iframe>
                     </div>
                 </div>
