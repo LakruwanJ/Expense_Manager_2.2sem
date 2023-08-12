@@ -17,13 +17,13 @@ if ($_SESSION["u_id"]) {
     //echo "Test clicked";
     $con_obj = new DbConnector();
     $con = $con_obj->getConnection();
-    $sql = "SELECT username, Possion FROM users WHERE id = '{$_SESSION['u_id']}' LIMIT 1"; //employee table
+    $sql = "SELECT Username, Type FROM employee WHERE EmpID = '{$_SESSION['u_id']}' LIMIT 1"; //employee table
     $result = $con->query($sql);
 
 
     while ($row = $result->fetch()) {
-        $name = $row["username"];
-        $position = $row["Possion"];
+        $name = $row["Username"];
+        $position = $row["Type"];
     }
 }
 
@@ -144,7 +144,7 @@ if (isset($_POST["save"])) {
         $dbcon = new DbConnector();
         $con = $dbcon->getConnection();
         
-      $sql= "UPDATE users SET password= '$pass' , FullName ='$Fname', email ='$email', PhoneNumOffice='$phNo',  PhoneNumPersonal= '$PphNo' WHERE id = '{$_SESSION['u_id']}' LIMIT 1";
+      $sql= "UPDATE employee SET password= '$pass' , FullName ='$Fname', email ='$email', PhoneNumOffice='$phNo',  PhoneNumPersonal= '$PphNo' WHERE EmpID = '{$_SESSION['u_id']}' LIMIT 1";
       
       if ($con->exec($sql)!== FALSE) {
           
