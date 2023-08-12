@@ -139,7 +139,7 @@ $conn = $dbcon->getConnection();
                     </div>
 
                     <div class="tab-pane fade <?php if ($activeTab === "report") echo "show active"; ?>" id="reports" style="height: 1000px;">
-                        <iframe src="reportsContents.php"></iframe>
+                        <iframe src="reports.php"></iframe>
                     </div>
 
                     <div class="tab-pane fade <?php if ($activeTab === "team") echo "show active"; ?>" id="team" style="height: 1000px;">
