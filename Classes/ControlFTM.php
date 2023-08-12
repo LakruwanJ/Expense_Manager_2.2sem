@@ -44,12 +44,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $FID = $in->FID;
                 $Amount = $in->Amount;
             }
-            $msj = "Sucessfully Added Income by" . $FID . "/nAmount : $" . $Amount;
+            $msj = "Sucessfully Added Income by " . $FID . " Amount : $" . $Amount;
             $noti->AddInSuccess($InID, $FID, $msj, $Date, $Time);
             $noti->AddInSuccessToM($InID, $FID, $msj, $Date, $Time);
-            header("Location: ../DashFTM.php");
+            header("Location: ../dashBoardF.php");
         }else{
-            header("Location: ../DashFTM.php");
+            header("Location: ../dashBoardF.php");
         }
         
     } elseif (isset($_POST['Add_expenses'])) {
@@ -73,6 +73,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $Time = date("H:i:s");
         if ($IECls->Addexpense($PID, $FID, $Amount, $Date, $Time) > 0) {
             $con = $dbcon->getConnection();
+            
+            $query = "UPDATE proposal SET Status='Completed' WHERE ProID =$PID";
+            $pstmt = $con->prepare($query);
+            $pstmt->execute();
+            
             $query = "SELECT * FROM expense ORDER BY ExID DESC LIMIT 1";
             $pstmt = $con->prepare($query);
             $pstmt->execute();
@@ -82,13 +87,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $FID = $in->FID;
                 $Amount = $in->Amount;
             }
-            $msj = "Sucessfully Added Expense by" . $FID . "/nAmount : $" . $Amount;
+            $msj = "Sucessfully Added Expense by " . $FID . " Amount : $" . $Amount;
             $noti->AddExSuccess($ExID, $FID, $msj, $Date, $Time);
             $noti->AddExSuccessToM($ExID, $FID, $msj, $Date, $Time);
             $noti->AddExSuccessToE($ExID, $FID, $emp, $msj, $Date, $Time);
-            header("Location: ../DashFTM.php");
+            header("Location: ../dashBoardF.php");
         }else{
-            header("Location: ../DashFTM.php");
+            header("Location: ../dashBoardF.php");
         }
         
     }
