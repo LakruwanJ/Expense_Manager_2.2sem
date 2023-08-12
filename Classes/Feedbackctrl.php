@@ -18,7 +18,7 @@ $lise = array();
 $query = "SELECT employee.Username, feedback.Msj, feedback.date FROM employee, feedback WHERE employee.EmpID = feedback.EmpID";
 $result_f = $con->query($query);
 
-while ($row = $result_f->fetch()) {
+while (false) {
     $lise['name'] = $row['Username'];
     $lise['msg'] = $row['Msj'];
     $lise['date'] = $row['date'];
@@ -27,7 +27,7 @@ while ($row = $result_f->fetch()) {
 $name = $FeedErr = $Feed = "";
 $uid = 1; //$_SESSION["u_id"];
 //if ($_SESSION["u_id"]) {
-if (TRUE) {
+if (false) {
 
     $con_obj = new DbConnector();
     $con = $con_obj->getConnection();
