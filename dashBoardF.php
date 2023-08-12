@@ -52,8 +52,11 @@
     <body>
 
         <?php
-        $FID = 'fid0001'
+        $FID = 'fid0001';
+        require_once 'Classes/DbConnector.php';
+        $dbcon = new Classes\DbConnector();
         ?>
+
         <!--Heading Part Start-->
         <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-body-tertiary hedderBody" style="height: 400px;">
             <div class="container text-center mt-1">
@@ -172,38 +175,6 @@
                     </div>
                 </div>
 
-                <!-- Modal for Add expenses -->
-                <form class="was-validated" action="Classes/ControlFTM.php" method="post">
-
-                    <input type="hidden" name="Add_expenses" value="1">
-                    <div class="modal fade" id="addexpense" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" >
-                            <div class="modal-content w-150">
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Add Expense</h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="row">
-                                        <label for="basic-url" class="form-label">Select Proposal Id</label>
-                                        <select class="form-select  mb-3" required name="epid">
-                                            <option value="1">Id 1</option>
-                                            <option value="2">Id 2</option>
-                                            <option value="3">Id 3</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <input type="hidden" name="fid" value="<?php echo$FID ?>" />
-                                <div class="modal-footer">
-                                    <button type="reset" class="btn btn-secondary">Discard</button>
-                                    <button type="submit" class="btn btn-primary">Add Expense</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-                <!--model end-->
-
                 <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
                     <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg ProposalCard" style=" background-image: url('https://plainbackground.com/plain1024/fef65b.png'); ">
                         <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1" >
@@ -227,6 +198,46 @@
             </div>
         </div>
         <br><Br><Br>
+        <!-- Modal for Add expenses -->
+        <div class="modal fade" id="addexpense" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" >
+                <div class="modal-content w-150">
+                    <form class="was-validated" action="Classes/ControlFTM.php" method="post">
+                        <input type="hidden" name="Add_expenses" value="1">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Add Expense</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <label for="basic-url" class="form-label">Select Proposal Id</label>
+                                <select class="form-select  mb-3" required name="epid">
+                                    <?php
+                                    $con = $dbcon->getConnection();
+                                    $query = "SELECT ProID FROM proposal WHERE Status='Appored'";
+                                    $pstmt = $con->prepare($query);
+                                    $pstmt->execute();
+                                    $rs = $pstmt->fetchAll(PDO::FETCH_OBJ);
+                                    foreach ($rs as $valueEmp) {
+                                        ?>
+                                        <option value="<?php echo $valueEmp->ProID ?>">
+                                            <?php echo $valueEmp->ProID ?></option>
+                                        <?php
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+                        <input type="hidden" name="fid" value="<?php echo$FID ?>" />
+                        <div class="modal-footer">
+                            <button type="reset" class="btn btn-secondary">Discard</button>
+                            <button type="submit" class="btn btn-primary">Add Expense</button>
+                        </div>
 
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!--model end-->
     </body>
 </html>

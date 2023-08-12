@@ -1,5 +1,5 @@
 <?php
-session_start();
+//session_start();
 require 'Classes/EditPro.php';
 
 $pro_obj = new Classes\EditPro();
