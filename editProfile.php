@@ -1,3 +1,7 @@
+<?php
+require_once 'Classes/EditPro.php';
+?>
+
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -52,8 +56,8 @@ and open the template in the editor.
                     <div class="col-lg-1"></div> 
                 </div>
 
-                <form action="Classes/EditProfileClass.php" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
-
+                <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" enctype="multipart/form-data" class="was-validation" novalidate>
+                    
                     <!--change password-->
                     <div class="row">
                         <div class="col-lg-1"></div>    
@@ -65,11 +69,18 @@ and open the template in the editor.
                                     </div>
                                     <div class="row">
                                         <div class="col-sm-4"><p class="mb-0">Enter password</p></div>
-                                        <div class="col-sm-8"><input type="password" name="password" id="form3Example3" class="form-control form-control-lg" placeholder="Enter your password" /><br></div>
+                                        <div class="col-sm-8"><input type="password" name="password" id="form3Example3" class="form-control form-control-lg" placeholder="Enter your password" required/><br></div>  
+                                        <?php echo $passErr; 
+                                        ?>
                                     </div>
                                     <div class="row">
                                         <div class="col-sm-4"><p class="mb-0">Confirm password</p></div>
-                                        <div class="col-sm-8"><input type="password" name="password" id="form3Example3" class="form-control form-control-lg" placeholder="Confirm your password" /><br></div>
+                                        <div class="col-sm-8"><input type="password" name="CmPassword" id="form3Example3" class="form-control form-control-lg" placeholder="Confirm your password" required/><br></div>
+                                        <?php echo $confirm_passErr; 
+                                        echo $notMatched_Err;
+                                        echo $SpassErr;?>
+                                        
+                                        
                                     </div>
                                 </div>
                                 <div class="col-lg-1"></div>
@@ -86,35 +97,46 @@ and open the template in the editor.
                                         <div class="col-sm-4"><p class="mb-0" style="padding-bottom: 5px">Enter your details</p></div><hr style="padding: 5px">
                                     </div>
                                     <div class="row">
-                                        <div class="col-sm-4"><p class="mb-0">ID</p></div>
-                                        <div class="col-sm-8"><input type="text" name="id" id="form3Example3" class="form-control form-control-lg" placeholder="Enter your User Name" />
+                                        <div class="col-sm-4"><p class="mb-0">User Name</p></div>
+                                        <div class="col-sm-8"><input type="text" name="UserName" id="form3Example3" class="form-control form-control-lg" placeholder="<?php echo $name ?>" disabled /></div>
                                     </div><hr style="opacity: .05">
                                     <div class="row">
                                         <div class="col-sm-4"><p class="mb-0">Full Name</p></div>
-                                        <div class="col-sm-8"><input type="text" name="Full Name" id="form3Example3" class="form-control form-control-lg" placeholder="Enter your Full Name" /></div>
-                                    </div><hr style="opacity: .05">
+                                        <div class="col-sm-8"><input type="text" name="FullName" id="form3Example3" class="form-control form-control-lg" placeholder="Enter your Full Name" required/></div>
+                                    </div><?php echo $nameErr;?><hr style="opacity: .05">
+                                    
                                     <div class="row">
                                         <div class="col-sm-4"><p class="mb-0">Add profile photo</p></div>
-                                        <div class="col-sm-8"><input class="form-control" type="file" id="formFileMultiple" multiple /></div>
-                                    </div><hr style="opacity: .05">
+                                        <div class="col-sm-8"><input class="form-control" name="photo" type="file" id="formFileMultiple" multiple required/></div>
+                                    </div><?php echo $photoErr;
+                                    echo $pE1;
+                                    echo $pE2;
+                                    echo $pE3;
+                                    echo $pE4;
+                                    echo $pE5;
+                                    echo $pE6;?><hr style="opacity: .05">
                                     <div class="row">
-                                        <div class="col-sm-4"><p class="mb-0">Possition</p></div>
-                                        <div class="col-sm-8"><input type="text" name="Possition" id="form3Example3" class="form-control form-control-lg" placeholder="Enter your Possition" /></div>
+                                        <div class="col-sm-4"><p class="mb-0">Position</p></div>
+                                        <div class="col-sm-8"><input type="text" name="Position" id="form3Example3" class="form-control form-control-lg" placeholder="<?php echo $position ?>" disabled=""/></div>
                                     </div><hr style="opacity: .05">
                                     <div class="row">
                                         <div class="col-sm-4"><p class="mb-0">Email</p></div>
-                                        <div class="col-sm-8"><input type="text" name="email" id="form3Example3" class="form-control form-control-lg" placeholder="Enter your Email" /></div>
-                                    </div><hr style="opacity: .05">
+                                        <div class="col-sm-8"><input type="email" name="email" id="form3Example3" class="form-control form-control-lg" placeholder="Enter your Email" required/></div>
+                                    </div><?php echo $emailErr;
+                                    echo $emailVErr;?><hr style="opacity: .05">
                                     <div class="row">
                                         <div class="col-sm-4"><p class="mb-0">Phone Number(Office)</p></div>
-                                        <div class="col-sm-8"><input type="text" name="office NO" id="form3Example3" class="form-control form-control-lg" placeholder="Enter your office Number" /></div>
-                                    </div><hr style="opacity: .05">
+                                        <div class="col-sm-8"><input type="number" name="phNo" id="form3Example3" class="form-control form-control-lg" placeholder="Enter your office Number" required /></div>
+                                    </div><?php echo $phNoErr;
+                                    echo $phNoCErr;
+                                    ?><hr style="opacity: .05">
                                     <div class="row">
                                         <div class="col-sm-4"><p class="mb-0">Phone Number(Personal)</p></div>
-                                        <div class="col-sm-8"><input type="text" name="Personal No" id="form3Example3" class="form-control form-control-lg" placeholder="Enter your mobile Number" /></div>
-                                    </div>
+                                        <div class="col-sm-8"><input type="number" name="PphNo" id="form3Example3" class="form-control form-control-lg" placeholder="Enter your mobile Number" required/></div>
+                                    </div><?php echo  $PphNoErr;
+                                    echo  $PphNoCErr;?>
                                     <div class="row" style="padding-top: 20px;">
-                                        <div class="d-grid gap-2 col-12 mx-auto"><button class="btn btn-primary" type="submit">Save Data</button>
+                                        <div class="d-grid gap-2 col-12 mx-auto"><button class="btn btn-primary" name="save" type="submit">Save Data</button>
                                         </div><br>
                                     </div>
 
@@ -129,14 +151,14 @@ and open the template in the editor.
 
                         </div>
                     </div>
-                    </div>
-                </form>
-        </section>
+            </div>
+        </form>
+    </section>
 
 
 
-        <?php
-        // put your code here
-        ?>
-    </body>
+    <?php
+    // put your code here
+    ?>
+</body>
 </html>
