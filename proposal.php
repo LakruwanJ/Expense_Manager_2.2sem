@@ -16,7 +16,7 @@ if (isset($_GET)) {
 }
 
 $ap = $re = FALSE;
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (isset($_POST['aprv'])) {
         $ap = $pro_obj->approve();
     }
