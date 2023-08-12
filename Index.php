@@ -5,12 +5,13 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <?php
-require 'Classes/DbConnector.php';
+/*require 'Classes/DbConnector.php';
 
 use Classes\DbConnector;
 
 $dbcon = new DbConnector();
-//
+*/
+include 'Classes/Login.php';
 ?>
 <html>
     <head>
@@ -58,21 +59,28 @@ $dbcon = new DbConnector();
                         <div class="col-lg-6 mb-5 mb-lg-0">
                             <div class="card">
                                 <div class="card-body py-5 px-md-5">
-                                    <form action="Classes/Login.php" method="POST">
+                                    <form action=<?php echo $_SERVER['PHP_SELF'];?> method="POST" class="needs-validation" >
+
                                         <!-- User Name -->
                                         <div class="mb-4">
-                                            <label class="form-label" for="form3Example3">User name</label>
-                                            <input type="text" id="form3Example3" class="form-control form-control-lg" placeholder="Enter your user name" />
+                                            <label for="validationDefault03" class="form-label">User Name</label>
+                                            <input type="text" class="form-control"   placeholder="Enter User Name" name="username" ><!-- if you want change this to email-->
+                                           <?php echo  $Err2; ?>  
                                         </div>
+
                                         <!-- Password input -->
                                         <div class="mb-4">
                                             <label class="form-label" for="form3Example3">Password</label>
-                                            <input type="Password" id="form3Example3" class="form-control form-control-lg" placeholder="Enter Password"/><br>
+                                            <input type="Password" id="form3Example3" class="form-control form-control-lg" placeholder="Enter Password" name="password"/><br>
+                                            <?php echo  $Err3; ?>
                                         </div>
+                                        
+                                        <?php echo  $Err5; ?>
 
                                         <div class="d-grid gap-2 col-6 mx-auto">
-                                            <button class="btn btn-primary" type="submit">LOGIN</button>
-                                        </div>        
+                                            <button class="btn btn-primary" name="submit" type="submit">LOGIN</button>
+                                        </div>  
+                                        
                                     </form>
 
                                 </div>
