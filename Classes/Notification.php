@@ -5,9 +5,8 @@ namespace Classes;
 use PDOException;
 use PDO;
 
-require 'DbConnector.php';
+require_once 'DbConnector.php';
 
-use Classes\DbConnector;
 
 class Notification {
 
@@ -15,28 +14,27 @@ class Notification {
     public function AddProSuccess($proid,$EmpID) {//$EmpID - employee
 
         $dbcon = new DbConnector();
-        $con = $dbcon->getConnection();
+        $conn = $dbcon->getConnection();
 
         $query2 = 'INSERT INTO notification( ProID, Nfrom, Nto, Status, Code) VALUES ("' . $proid . '","' . $EmpID . '","' . $EmpID . '","0","1")';
         echo $query2;
-        $pstmt2 = $con->prepare($query2);
+        $pstmt2 = $conn->prepare($query2);
         $ok = $pstmt2->execute();
         if ($ok > 0) {
             header("Location: ../index.php");
         } else {
             
         }
-//        
     }
 
     //2
     public function NewProToAllF($proid,$EmpID) {
 
         $dbcon = new DbConnector();
-        $con = $dbcon->getConnection();
+        $conn = $dbcon->getConnection();
 //
 //        $query = "SELECT EmpID FROM proposal WHERE ProID = '.$proid.'";
-//        $pstmt = $con->prepare($query);
+//        $pstmt = $conn->prepare($query);
 //        $pstmt->execute();
 //        $rs = $pstmt->fetchAll(PDO::FETCH_OBJ);
 //        foreach ($rs as $sw) {
@@ -45,7 +43,7 @@ class Notification {
 
         $query = 'INSERT INTO notification( ProID, Nfrom, Nto, Status, Code) VALUES ("' . $proid . '","' . $EmpID . '","AllF","0","2")';
         echo $query;
-        $pstmt = $con->prepare($query);
+        $pstmt = $conn->prepare($query);
         $ok = $pstmt->execute();
         if ($ok > 0) {
             header("Location: ../index.php");
@@ -58,11 +56,11 @@ class Notification {
     public function UpdatebyFSuccess($proid, $FID) {
         
         $dbcon = new DbConnector();
-        $con = $dbcon->getConnection();
+        $conn = $dbcon->getConnection();
 
         $query = 'INSERT INTO notification( ProID, Nfrom, Nto, Status, Code) VALUES ("' . $proid . '","' . $FID . '","' . $FID . '","0","3")';
         echo $query;
-        $pstmt = $con->prepare($query);
+        $pstmt = $conn->prepare($query);
         $ok = $pstmt->execute();
         if ($ok > 0) {
             header("Location: ../index.php");
@@ -75,10 +73,10 @@ class Notification {
     public function UpdatebyFToE($proid, $FID) {
         
         $dbcon = new DbConnector();
-        $con = $dbcon->getConnection();
+        $conn = $dbcon->getConnection();
 
         $query = "SELECT EmpID FROM proposal WHERE ProID = '.$proid.'";
-        $pstmt = $con->prepare($query);
+        $pstmt = $conn->prepare($query);
         $pstmt->execute();
         $rs = $pstmt->fetchAll(PDO::FETCH_OBJ);
         foreach ($rs as $sw) {
@@ -87,7 +85,7 @@ class Notification {
         
         $query2 = 'INSERT INTO notification( ProID, Nfrom, Nto, Status, Code) VALUES ("' . $proid . '","' . $FID . '","' . $emp . '","0","4")';
         echo $query2;
-        $pstmt2 = $con->prepare($query2);
+        $pstmt2 = $conn->prepare($query2);
         $ok = $pstmt2->execute();
         if ($ok > 0) {
             header("Location: ../index.php");
@@ -102,7 +100,7 @@ class Notification {
         
         $query = 'INSERT INTO notification( ProID, Nfrom, Nto, Status, Code) VALUES ("' . $proid . '","' . $FID . '","AllM","0","5")';
         echo $query;
-        $pstmt = $con->prepare($query);
+        $pstmt = $conn->prepare($query);
         $ok = $pstmt->execute();
         if ($ok > 0) {
             header("Location: ../index.php");
@@ -115,11 +113,11 @@ class Notification {
     public function UpdatebyMSuccess($proid,$MngID) {
         
         $dbcon = new DbConnector();
-        $con = $dbcon->getConnection();
+        $conn = $dbcon->getConnection();
 
         $query2 = 'INSERT INTO notification( ProID, Nfrom, Nto, Status, Code) VALUES ("' . $proid . '","' . $MngID . '","' . $MngID . '","0","6")';
         echo $query2;
-        $pstmt2 = $con->prepare($query2);
+        $pstmt2 = $conn->prepare($query2);
         $ok = $pstmt2->execute();
         if ($ok > 0) {
             header("Location: ../index.php");
@@ -133,10 +131,10 @@ class Notification {
     public function UpdatebyMToE($proid,$MngID) {
         
         $dbcon = new DbConnector();
-        $con = $dbcon->getConnection();
+        $conn = $dbcon->getConnection();
 
         $query = "SELECT EmpID FROM proposal WHERE ProID = '.$proid.'";
-        $pstmt = $con->prepare($query);
+        $pstmt = $conn->prepare($query);
         $pstmt->execute();
         $rs = $pstmt->fetchAll(PDO::FETCH_OBJ);
         foreach ($rs as $sw) {
@@ -145,7 +143,7 @@ class Notification {
         
         $query2 = 'INSERT INTO notification( ProID, Nfrom, Nto, Status, Code) VALUES ("' . $proid . '","' . $MngID . '","' . $emp . '","0","7")';
         echo $query2;
-        $pstmt2 = $con->prepare($query2);
+        $pstmt2 = $conn->prepare($query2);
         $ok = $pstmt2->execute();
         if ($ok > 0) {
             header("Location: ../index.php");
@@ -159,11 +157,11 @@ class Notification {
     public function UpdatebyMToF($proid,$MngID) {
         
         $dbcon = new DbConnector();
-        $con = $dbcon->getConnection();
+        $conn = $dbcon->getConnection();
 
         $query = 'INSERT INTO notification( ProID, Nfrom, Nto, Status, Code) VALUES ("' . $proid . '","' . $MngID . '","AllF","0","8")';
         echo $query;
-        $pstmt = $con->prepare($query);
+        $pstmt = $conn->prepare($query);
         $ok = $pstmt->execute();
         if ($ok > 0) {
             header("Location: ../index.php");
@@ -173,93 +171,64 @@ class Notification {
         
     }
 
-    //9
-    public function AddExSuccess($proid, $FID) {
+    //9 ok
+    public function AddExSuccess($ExID, $FID, $msj , $Date, $time) {
         
         $dbcon = new DbConnector();
-        $con = $dbcon->getConnection();
+        $conn = $dbcon->getConnection();
 
-        $query = 'INSERT INTO notification( ProID, Nfrom, Nto, Status, Code) VALUES ("' . $proid . '","' . $FID . '","' . $FID . '","0","9")';
-        echo $query;
-        $pstmt = $con->prepare($query);
-        $ok = $pstmt->execute();
-        if ($ok > 0) {
-            header("Location: ../index.php");
-        } else {
-            
-        }
-    }
-
-    //10
-    public function AddExSuccessToE($proid, $FID) {
-        
-        $dbcon = new DbConnector();
-        $con = $dbcon->getConnection();
-
-        $query = "SELECT EmpID FROM proposal WHERE ProID = '.$proid.'";
-        $pstmt = $con->prepare($query);
+        $query = 'INSERT INTO notification(ProIDOr, Nfrom, Nto, Status, Msj, Date, Time) VALUES ("' . $ExID . '","' . $FID . '","' . $FID . '","0","'.$msj .'","'. $Date.'","'. $time.'")';
+        $pstmt = $conn->prepare($query);
         $pstmt->execute();
-        $rs = $pstmt->fetchAll(PDO::FETCH_OBJ);
-        foreach ($rs as $sw) {
-            $emp = $sw->EmpID;
-        }
-        
-        $query2 = 'INSERT INTO notification( ProID, Nfrom, Nto, Status, Code) VALUES ("' . $proid . '","' . $FID . '","' . $emp . '","0","10")';
-        echo $query2;
-        $pstmt2 = $con->prepare($query2);
-        $ok = $pstmt2->execute();
-        if ($ok > 0) {
-            header("Location: ../index.php");
-        } else {
-            
-        }
         
     }
 
-    //11
-    public function AddExSuccessToM($proid,$FID) {
-        
-        $query = 'INSERT INTO notification( ProID, Nfrom, Nto, Status, Code) VALUES ("' . $proid . '","' . $FID . '","AllM","0","11")';
-        echo $query;
-        $pstmt = $con->prepare($query);
-        $ok = $pstmt->execute();
-        if ($ok > 0) {
-            header("Location: ../index.php");
-        } else {
-            
-        }
-    }
-
-    //12
-    public function AddInSuccess($InID, $FID) {
+    //10 ok
+    public function AddExSuccessToE($ExID, $FID, $emp, $msj , $Date, $time) {
         
         $dbcon = new DbConnector();
-        $con = $dbcon->getConnection();
-
-        $query = 'INSERT INTO notification( ProID, Nfrom, Nto, Status, Code) VALUES ("' . $proid . '","' . $FID . '","' . $FID . '","0","12")';
-        echo $query;
-        $pstmt = $con->prepare($query);
+        $conn = $dbcon->getConnection();
+        
+        $query = 'INSERT INTO notification(ProIDOr, Nfrom, Nto, Status, Msj, Date, Time) VALUES ("' . $ExID . '","' . $FID . '","' . $emp . '","0","'.$msj .'","'. $Date.'","'. $time.'")';
+        $pstmt = $conn->prepare($query);
         $ok = $pstmt->execute();
-        if ($ok > 0) {
-            header("Location: ../index.php");
-        } else {
-            
-        }
         
     }
 
-    //13
-    public function AddInSuccessToM($InID,$FID) {
+    //11 ok
+    public function AddExSuccessToM($ExID, $FID, $msj , $Date, $time) {
         
-        $query = 'INSERT INTO notification( ProID, Nfrom, Nto, Status, Code) VALUES ("' . $InID . '","' . $FID . '","AllM","0","13")';
+        $dbcon = new DbConnector();
+        $conn = $dbcon->getConnection();
+        
+        $query = 'INSERT INTO notification(ProIDOr, Nfrom, Nto, Status, Msj, Date, Time) VALUES ("' . $ExID . '","' .  $FID . '","AllM","0","'.$msj .'","'. $Date.'","'. $time.'")';
+        $pstmt = $conn->prepare($query);
+        $pstmt->execute();
+        
+    }
+
+    //12 ok
+    public function AddInSuccess($ExID, $FID, $msj , $Date, $time) {
+        
+        $dbcon = new DbConnector();
+        $conn = $dbcon->getConnection();
+       
+        $query = 'INSERT INTO notification(ProIDOr, Nfrom, Nto, Status, Msj, Date, Time) VALUES ("' . $ExID . '","' . $FID . '","' . $FID . '","0","'.$msj .'","'. $Date.'","'. $time.'")';
+        $pstmt = $conn->prepare($query);
+        $pstmt->execute();
+        
+    }
+
+    //13 ok
+    public function AddInSuccessToM($InID, $FID, $msj , $Date, $time) {
+        
+        $dbcon = new DbConnector();
+        $conn = $dbcon->getConnection();
+        
+        $query = 'INSERT INTO notification(ProIDOr, Nfrom, Nto, Status, Msj, Date, Time) VALUES ("' . $InID . '","' . $FID . '","AllM","0","'.$msj .'","'. $Date.'","'. $time.'")';
         echo $query;
-        $pstmt = $con->prepare($query);
-        $ok = $pstmt->execute();
-        if ($ok > 0) {
-            header("Location: ../index.php");
-        } else {
-            
-        }
+        $pstmt = $conn->prepare($query);
+        $pstmt->execute();
     }
 
 }
