@@ -14,7 +14,7 @@ use Classes\DbConnector;
 $db_obj = new DbConnector();
 $con = $db_obj->getConnection();
 
-$sql = "SELECT DISTINCT proposal.ProID,employee.Username, proposal.Date, proposal.Status FROM employee, proposal WHERE employee.EmpID = proposal.EmpID";
+$sql = "SELECT DISTINCT proposal.ProID,employee.Username, proposal.Date, proposal.Status FROM employee, proposal WHERE employee.EmpID = proposal.EmpID AND proposal.Status='pending' ";
 
 $exicute = $con->query($sql);
 ?>
