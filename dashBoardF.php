@@ -51,6 +51,9 @@
     </head>
     <body>
 
+        <?php
+        $FID = 'fid0001'
+        ?>
         <!--Heading Part Start-->
         <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-body-tertiary hedderBody" style="height: 400px;">
             <div class="container text-center mt-1">
@@ -68,10 +71,6 @@
         </div>
         <!--Heading part End-->
 
-
-
-
-        <!--Aproved,Rejected,Pending proposals Start-->
         <div class="container text-center mt-5">
             <div class="row">
 
@@ -101,54 +100,54 @@
                                 <h1 class="modal-title fs-5" id="staticBackdropLabel">Add Income</h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                            <div class="modal-body">
-                                <form class="was-validated">
-                                    <div class="row">
-                                        <form>
-                                            <label for="basic-url" class="form-label">Select Income Category</label>
-                                            <select class="form-select  mb-3" required aria-label="select example">            
 
-                                                <option value="1">Income Category 1</option>
-                                                <option value="2">Income Category 2</option>
-                                                <option value="3">Income Category 3</option>
-                                            </select>
+                            <form class="was-validated" action="Classes/ControlFTM.php" method="post">
+                                <input type="hidden" name="Add_Income" value="1">
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <label for="basic-url" class="form-label">Select Income Category</label>
+                                        <select class="form-select mb-3" required name="iCat">
+                                            <option value="Derect Income">Derect Income</option>
+                                            <option value="Profit">Profit</option>
+                                            <option value="Other">Other</option>
+                                        </select>
                                     </div>
                                     <div class="row">
                                         <div class="mb-3">
                                             <label for="basic-url" class="form-label">Subject</label>
                                             <div class="input-group">
                                                 <span class="input-group-text" id="basic-addon3">Subject Title</span>
-                                                <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4">
+                                                <input type="text" class="form-control" id="basic-url" name="iTitle" required>
                                             </div>
                                             <div class="form-text" id="basic-addon4">Give a Title about income in Short.</div>
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-6">
-                                            <div class="input-group mb-3">
-                                                <input type="text" class="form-control" aria-label="Amount (to the nearest Rupees)">
+                                        <div class="col-12">
+                                            <div class="input-group mb-3">                                                
+                                                <span class="input-group-text" id="basic-addon3">Amount</span>
+                                                <input type="number" class="form-control" required name="iamount">
                                                 <span class="input-group-text">.00</span>
                                             </div>
-                                        </div>
-                                        <div class="col-6">
-                                            <input type="date" class="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4">
                                         </div>
                                     </div>              
                                     <div class="row">
                                         <div class="mb-3">
                                             <label for="validationTextarea" class="form-label">Description</label>
-                                            <textarea class="form-control" id="validationTextarea" placeholder="Required example textarea" required></textarea>
+                                            <textarea class="form-control" id="validationTextarea" placeholder="Required example textarea" name="ides" required></textarea>
                                             <div class="invalid-feedback">
                                                 Plese Describe About this Income.
                                             </div>
                                         </div>
                                     </div>
-                                </form>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Discard</button>
-                                <button type="button" class="btn btn-primary">Add Income</button>
-                            </div>
+                                </div>
+                                <input type="hidden" name="fid" value="<?php echo$FID ?>" />
+                                <div class="modal-footer">
+                                    <button type="reset" class="btn btn-secondary">Discard</button>
+                                    <button type="sumbit" class="btn btn-primary">Add Income</button>
+                                </div>
+
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -174,64 +173,35 @@
                 </div>
 
                 <!-- Modal for Add expenses -->
-                <div class="modal fade" id="addexpense" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" >
-                        <div class="modal-content w-150">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Add Expense</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <form class="was-validated">
-                                    <div class="row">
-                                        <form>
-                                            <label for="basic-url" class="form-label">Select Proposal Id</label>
-                                            <select class="form-select  mb-3" required aria-label="select example">            
+                <form class="was-validated" action="Classes/ControlFTM.php" method="post">
 
-                                                <option value="1">Id 1</option>
-                                                <option value="2">Id 2</option>
-                                                <option value="3">Id 3</option>
-                                            </select>
-                                    </div>
+                    <input type="hidden" name="Add_expenses" value="1">
+                    <div class="modal fade" id="addexpense" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" >
+                            <div class="modal-content w-150">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Add Expense</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
                                     <div class="row">
-                                        <div class="mb-3">
-                                            <label for="basic-url" class="form-label">Subject</label>
-                                            <div class="input-group">
-                                                <span class="input-group-text" id="basic-addon3">Subject Title</span>
-                                                <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4">
-                                            </div>
-                                            <div class="form-text" id="basic-addon4">Give a Title about expense in Short.</div>
-                                        </div>
+                                        <label for="basic-url" class="form-label">Select Proposal Id</label>
+                                        <select class="form-select  mb-3" required name="epid">
+                                            <option value="1">Id 1</option>
+                                            <option value="2">Id 2</option>
+                                            <option value="3">Id 3</option>
+                                        </select>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <div class="input-group mb-3">
-                                                <input type="text" class="form-control" aria-label="Amount (to the nearest Rupees)">
-                                                <span class="input-group-text">.00</span>
-                                            </div>
-                                        </div>
-                                        <div class="col-6">
-                                            <input type="date" class="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4">
-                                        </div>
-                                    </div>              
-                                    <div class="row">
-                                        <div class="mb-3">
-                                            <label for="validationTextarea" class="form-label">Description</label>
-                                            <textarea class="form-control" id="validationTextarea" placeholder="Required example textarea" required></textarea>
-                                            <div class="invalid-feedback">
-                                                Plese Describe About this expense.
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Discard</button>
-                                <button type="button" class="btn btn-primary">Add Expense</button>
+                                </div>
+                                <input type="hidden" name="fid" value="<?php echo$FID ?>" />
+                                <div class="modal-footer">
+                                    <button type="reset" class="btn btn-secondary">Discard</button>
+                                    <button type="submit" class="btn btn-primary">Add Expense</button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </form>
                 <!--model end-->
 
                 <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
@@ -253,16 +223,10 @@
                     </div>
                 </div><br>
 
+
             </div>
         </div>
-
-        <!--Aproved,Rejected,Pending proposals End-->
-
         <br><Br><Br>
-
-
 
     </body>
 </html>
-
-

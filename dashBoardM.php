@@ -1,4 +1,15 @@
 <!DOCTYPE html>
+<?php
+// Declare Variables
+$server = "localhost";
+$userName = "root";
+$password = "";
+$dbName = "expensemanager";
+
+// starting Connection with Database
+
+$con = mysqli_connect($server, $userName, $password, $dbName);
+?>
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
@@ -265,65 +276,115 @@
 
 
         <!--Expense Chartt start-->
-        <br><br><div >
+        <div>
             <div class="container text-center">
                 <div class="row">
-                    <div class="col chart1">
-                        <canvas id="myChart" style="height: 300px;"></canvas>
-                    </div> 
-                    <div class="col chart2">
-                        <canvas id="myChart2"></canvas>
+                    <div class="col chart1 text-center">
+                        <h1 class="text">Pending Proposals Cost</h1>
+                        <canvas id="myChart" class="mt-4" style="height: 300px;"></canvas>
                     </div>
-                </div>  
-            </div>  
-        </div><br><br><br><br><br>
-
-
+                    <div class="col chart2 text-center">
+                        <h1 class="text">Recent Expenses</h1>
+                        <canvas id="myChart2" class="mt-4"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
         <script>
             const ctx2 = document.getElementById('myChart2');
-
             new Chart(ctx2, {
-                type: 'doughnut',
-                data: {
-                    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-                    datasets: [{
-                            label: '# of Votes',
-                            data: [12, 19, 3, 5, 2, 3],
-                            borderWidth: 1
-                        }]
-                },
-                options: {
+            type: 'doughnut',
+                    data: {
+                    labels: [
+<?php
+$queryExpenses = "SELECT * from proposal WHERE Status =" . "'Approved';";
+$resultchart2 = mysqli_query($con, $queryExpenses);
+while ($row = mysqli_fetch_assoc($resultchart2)) {
+    ?>
+    <?php
+    $subject = $row['Subject'];
+    echo "'" . "$subject" . "'" . ",";
+    ?>
+    <?php
+}
+?>
+                    ],
+                            datasets: [{
+                            label: 'In Rupees',
+                                    data: [
+<?php
+$queryExpenses = "SELECT * from proposal WHERE Status =" . "'Approved';";
+$resultchart2 = mysqli_query($con, $queryExpenses);
+while ($row = mysqli_fetch_assoc($resultchart2)) {
+    ?>
+    <?php
+    $amount = $row['Amount'];
+    echo "'" . "$amount" . "'" . ",";
+    ?>
+    <?php
+}
+?>
+                                    ],
+                                    borderWidth: 1
+                            }]
+                    },
+                    options: {
                     scales: {
-                        y: {
-                            beginAtZero: true
-                        }
+                    y: {
+                    beginAtZero: true
                     }
-                }
+                    }
+                    }
             });
         </script>
         <script>
             const ctx = document.getElementById('myChart');
-
             new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-                    datasets: [{
-                            label: '# of Votes',
-                            data: [12, 19, 3, 5, 2, 3],
-                            borderWidth: 1
-                        }]
-                },
-                options: {
+            type: 'bar',
+                    data: {
+                    labels: [
+<?php
+$queryExpenses = "SELECT * from proposal WHERE Status =" . "'Pending';";
+$resultchart2 = mysqli_query($con, $queryExpenses);
+while ($row = mysqli_fetch_assoc($resultchart2)) {
+    ?>
+    <?php
+    $ProID = $row['ProID'];
+    echo "'" . "$ProID" . "'" . ",";
+    ?>
+    <?php
+}
+?>
+                    ],
+                            datasets: [{
+                            label: 'In Rupees',
+                                    data: [
+<?php
+$queryExpenses = "SELECT * from proposal WHERE Status =" . "'Pending';";
+$resultchart2 = mysqli_query($con, $queryExpenses);
+while ($row = mysqli_fetch_assoc($resultchart2)) {
+    ?>
+    <?php
+    $expense = $row['Amount'];
+    echo "$expense" . ",";
+    ?>
+    <?php
+}
+?>
+                                    ],
+                                    borderWidth: 1
+                            }]
+                    },
+                    options: {
                     scales: {
-                        y: {
-                            beginAtZero: true
-                        }
+                    y: {
+                    beginAtZero: true
                     }
-                }
+                    }
+                    }
             });
         </script>
         <!--Expense Chart end-->
