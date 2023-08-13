@@ -15,13 +15,12 @@ class AddPromoDeleteMember {
         $dbcon = new DbConnector();
         $con = $dbcon->getConnection();
 
-        $query = 'INSERT INTO employee(EmpID,password,Username,Type,RegistedDate) VALUES (?,?,?,?,?)';
+        $query = 'INSERT INTO employee(password,Username,Type,RegistedDate) VALUES (?,?,?,?)';
         $pstmt = $con->prepare($query);
-        $pstmt->bindValue(1, $EmpID);
-        $pstmt->bindValue(2, $password);
-        $pstmt->bindValue(3, $Username);
-        $pstmt->bindValue(4, $Type);
-        $pstmt->bindValue(5, $Date);
+        $pstmt->bindValue(1, $password);
+        $pstmt->bindValue(2, $Username);
+        $pstmt->bindValue(3, $Type);
+        $pstmt->bindValue(4, $Date);
         $pstmt->execute();
         
         if ($pstmt->rowCount()>0){
@@ -35,7 +34,6 @@ class AddPromoDeleteMember {
     public function PromoteMem($Username,$Type) {
         $dbcon = new DbConnector();
         $con = $dbcon->getConnection();
-
         $query = 'UPDATE employee SET Type=? WHERE Username=?';
         $pstmt = $con->prepare($query);
         $pstmt->bindValue(1, $Type);
@@ -53,7 +51,6 @@ class AddPromoDeleteMember {
     public function RemoveMem($Username) {
         $dbcon = new DbConnector();
         $con = $dbcon->getConnection();
-
         $query = 'UPDATE employee SET RegistedDate="NotFound",Type="NotFound" WHERE Username=?';
         $pstmt = $con->prepare($query);
         $pstmt->bindValue(1, $Username);

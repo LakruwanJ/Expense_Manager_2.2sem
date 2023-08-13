@@ -9,7 +9,7 @@ if (isset($_POST['submit'])) {
     $amount = $_POST['amount'];
     $date = $_POST['date'];
     $description = $_POST['description'];
-    $status = 'added';
+    $status = 'pending';
 
     // Assuming your dbconnector.php has a class and method for database connection
     $dbcon = new Classes\DbConnector();

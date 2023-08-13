@@ -138,30 +138,17 @@ if ($uname == NULL) {
                         </ul>
                     </li>
                     <li>&nbsp;&nbsp;&nbsp;&nbsp;</li>
-<?php
-                    $query = "SELECT * FROM employee WHERE EmpID='" . $EmpID . "'";
-                    $pstmt = $con->prepare($query);
-                    $pstmt->execute();
-                    $rs = $pstmt->fetchAll(PDO::FETCH_OBJ);
-                    foreach ($rs as $valueEmp) {
-                        $name = $valueEmp->Username;
-                        $type = $valueEmp->Type;
-                    }
-                    ?>
                     <!--profile-->
-                    <li style="padding-top: 13px"><?php echo $name; ?>&nbsp;</li>
+                    <li style="padding-top: 13px"><?php echo $uname; ?>&nbsp;</li>
                     <li class="nav-item dropdown" aria-labelledby="navbarDropdownMenuLink">
                         <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="true">
                             <img src="Images/propic.jpg" class="rounded-circle" height="40" alt="ProPic" loading="lazy" />
                         </a>
-                        <!--list-group list-group-flush mx-3 mt-4-->
                         <ul  class="dropdown-menu dropdown-menu-end">
                             <li><a class="dropdown-item" href=profile.php><i class="far fa-user"></i><span>&nbsp;&nbsp;&nbsp;My profile</span></a></li>
-
-                            <!-- Scrollable modal -->
                             <div class="modal-dialog modal-dialog-scrollable" id="teamm">
                             </div>
-                            <li><a class="dropdown-item"  data-bs-toggle="list" href="#"><i class="fas fa-circle fa-xs" style="color: #00cd01"></i><span>&nbsp;&nbsp;&nbsp;<?php echo $type; ?></span></a></li>
+                            <li><a class="dropdown-item"  data-bs-toggle="list" href="#"><i class="fas fa-circle fa-xs" style="color: #00cd01"></i><span>&nbsp;&nbsp;&nbsp;<?php echo $Type; ?></span></a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item"  data-bs-toggle="list" href="#"><i class="fas fa-right-from-bracket"></i><span>&nbsp;&nbsp;&nbsp;Logout</span></a></li>
                         </ul>

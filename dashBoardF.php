@@ -93,9 +93,7 @@
                             <h3 class="pt-6 mt-2 mb-6 display-8 lh-1 fw-bold aprovedHedding">Add Income</h3>
                             <ul class="d-flex list-unstyled mt-auto">
                                 <li class="me-auto">
-                                    <span class="mt-3"><img src="https://cdn-icons-png.flaticon.com/512/5610/5610944.png" alt="Aproved Proposals" width="32" height="32" class="rounded-circle border border-white mt-3"/>
-                                        <p class="h6 mt-3">Count</p>
-                                    </span>
+                                    
                                 </li>
                                 <li class="d-flex align-items-center mt-3">
                                     <button class="btn btn-success" type="button" data-bs-toggle="modal" data-bs-target="#addIncome">Add Income</button>                
@@ -154,7 +152,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <input type="hidden" name="fid" value="<?php echo$EmpID ?>" />
+                                <input type="hidden" name="fid" value="<?php echo $EmpID ?>" />
                                 <div class="modal-footer">
                                     <button type="reset" class="btn btn-secondary">Discard</button>
                                     <button type="sumbit" class="btn btn-primary">Add Income</button>
@@ -172,10 +170,7 @@
                             <h3 class="pt-6 mt-2 mb-6 display-8 lh-1 fw-bold">Add expenses </h3>
                             <ul class="d-flex list-unstyled mt-auto">
                                 <li class="me-auto">
-                                    <span>
-                                        <img src="https://static.vecteezy.com/system/resources/previews/017/178/032/original/round-cross-mark-symbol-with-transparent-background-free-png.png" alt="Bootstrap" width="32" height="32" class="rounded-circle border border-white" />
-                                        <p class="h6 mt-3">Count</p>
-                                    </span>
+                                    
                                 </li>
                                 <li class="d-flex align-items-center">
                                     <button class="btn btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#addexpense">Add expenses</button>                
@@ -191,10 +186,7 @@
                             <h3 class="pt-6 mt-2 mb-6 display-8 lh-1 fw-bold pendingHedding">Review Pending Proposals</h3>
                             <ul class="d-flex list-unstyled mt-auto">
                                 <li class="me-auto">
-                                    <span>
-                                        <img src="https://img.uxwing.com/wp-content/themes/uxwing/download/signs-symbols/caution-icon.png" alt="Bootstrap" width="32" height="32" class="rounded-circle border border-white" />
-                                        <p class="h6 mt-3" style="color: black">Count</p>
-                                    </span>
+                                    
                                 </li>
                                 <a href="proposals.php"><li class="d-flex align-items-center">
                                         <button class="btn btn-warning" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdropPP" aria-controls="staticBackdropPP">Review</button>
@@ -238,7 +230,7 @@
                                 </select>
                             </div>
                         </div>
-                        <input type="hidden" name="fid" value="<?php echo$EmpID ?>" />
+                        <input type="hidden" name="fid" value="<?php echo $EmpID ?>" />
                         <div class="modal-footer">
                             <button type="reset" class="btn btn-secondary">Discard</button>
                             <button type="submit" class="btn btn-primary">Add Expense</button>

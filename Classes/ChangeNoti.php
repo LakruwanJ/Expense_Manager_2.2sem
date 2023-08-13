@@ -12,5 +12,3 @@ $pstmt = $conn->prepare($query);
 $pstmt->execute();
 
 header('Location: '.$_GET["url"]);
-
-

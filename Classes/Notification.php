@@ -162,9 +162,9 @@ class Notification {
         $conn = $dbcon->getConnection();
         
         $query = 'INSERT INTO notification(ProIDOr, Nfrom, Nto, Status, Msj, Date, Time) VALUES ("' . $InID . '","' . $FID . '","AllM","0","'.$msj .'","'. $Date.'","'. $time.'")';
-        echo $query;
         $pstmt = $conn->prepare($query);
         $pstmt->execute();
+        
     }
 
 }

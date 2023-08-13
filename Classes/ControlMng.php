@@ -21,7 +21,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $user->setPassword($_POST["pword"]);
         $user->setType($_POST["Role"]);
 
-        $EmpID = '6';
         $password = $user->getPassword();
         $Username = $user->getUsername();
         $Type = $user->getType();

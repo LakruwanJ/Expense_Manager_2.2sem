@@ -41,17 +41,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $rs = $pstmt->fetchAll(PDO::FETCH_OBJ);
             foreach ($rs as $in) {
                 $InID = $in->InID;
-                $FID = $in->FID;
+                $FID = $in->EmpID;
                 $Amount = $in->Amount;
             }
-            $msj = "Sucessfully Added Income by " . $FID . " Amount : $" . $Amount;
+
+            $msj = "Sucessfully Added Income by Finance Team member : " . $FID . " Amount : $" . $Amount;
             $noti->AddInSuccess($InID, $FID, $msj, $Date, $Time);
             $noti->AddInSuccessToM($InID, $FID, $msj, $Date, $Time);
             header("Location: ../dashBoardF.php");
-        }else{
+        } else {
             header("Location: ../dashBoardF.php");
         }
-        
     } elseif (isset($_POST['Add_expenses'])) {
 
         $Amount = 0;
@@ -59,7 +59,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $PID = $_POST['epid'];
 
         $con = $dbcon->getConnection();
-        $query = "SELECT Amount,EmpID FROM proposal WHERE ProID='" . $PID . '"';
+        $query = "SELECT Amount,EmpID FROM proposal WHERE ProID='" . $PID . "'";
+        echo $query;
         $pstmt = $con->prepare($query);
         $pstmt->execute();
         $rs = $pstmt->fetchAll(PDO::FETCH_OBJ);
@@ -71,32 +72,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $FID = $_POST['fid'];
         $Date = date("Y-m-d");
         $Time = date("H:i:s");
+
         if ($IECls->Addexpense($PID, $FID, $Amount, $Date, $Time) > 0) {
             $con = $dbcon->getConnection();
-            
+
             $query = "UPDATE proposal SET Status='Completed' WHERE ProID =$PID";
             $pstmt = $con->prepare($query);
             $pstmt->execute();
-            
+
             $query = "SELECT * FROM expense ORDER BY ExID DESC LIMIT 1";
             $pstmt = $con->prepare($query);
             $pstmt->execute();
             $rs = $pstmt->fetchAll(PDO::FETCH_OBJ);
             foreach ($rs as $in) {
                 $ExID = $in->ExID;
-                $FID = $in->FID;
+                $FID = $in->EmpID;
                 $Amount = $in->Amount;
             }
-            $msj = "Sucessfully Added Expense by " . $FID . " Amount : $" . $Amount;
+            $msj = "Sucessfully Added Expense by Finance Team member : " . $FID . " Amount : $" . $Amount;
             $noti->AddExSuccess($ExID, $FID, $msj, $Date, $Time);
             $noti->AddExSuccessToM($ExID, $FID, $msj, $Date, $Time);
             $noti->AddExSuccessToE($ExID, $FID, $emp, $msj, $Date, $Time);
-            header("Location: ../dashBoardF.php");
-        }else{
-            header("Location: ../dashBoardF.php");
+//            header("Location: ../dashBoardF.php");
+        } else {
+//            header("Location: ../dashBoardF.php");
         }
-        
     }
-}else{
+} else {
     header("Location: ../Index.php");
 }

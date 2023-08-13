@@ -15,7 +15,7 @@ class AddInconeExpences {
         $dbcon = new DbConnector();
         $con = $dbcon->getConnection();
 
-        $query = 'INSERT INTO income(FID,Category,Subject,Amount,Description,Date,Time) VALUES (?,?,?,?,?,?,?)';
+        $query = 'INSERT INTO income(EmpID,Category,Subject,Amount,Description,Date,Time) VALUES (?,?,?,?,?,?,?)';
         $pstmt = $con->prepare($query);
         $pstmt->bindValue(1, $FID);
         $pstmt->bindValue(2, $Category);
@@ -55,7 +55,7 @@ class AddInconeExpences {
         $dbcon = new DbConnector();
         $con = $dbcon->getConnection();
 
-        $query = 'INSERT INTO expense(ProID,FID,Amount,Date,Time) VALUES (?,?,?,?,?)';
+        $query = 'INSERT INTO expense(ProID,EmpID,Amount,Date,Time) VALUES (?,?,?,?,?)';
         $pstmt = $con->prepare($query);
         $pstmt->bindValue(1, $ProID);
         $pstmt->bindValue(2, $FID);

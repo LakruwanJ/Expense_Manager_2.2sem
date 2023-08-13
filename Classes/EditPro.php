@@ -2,8 +2,6 @@
 
 namespace Classes;
 
-session_start();
-
 use PDOException;
 use PDO;
 

@@ -8,6 +8,8 @@ use Classes\DbConnector;
 $dbcon = new Classes\DbConnector();
 $conn = $dbcon->getConnection();
 
+$phpself = $_SERVER['PHP_SELF'];
+
 session_start();
 $uname = $_SESSION["Username"];
 $EmpID = $_SESSION["u_id"];
