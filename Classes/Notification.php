@@ -11,48 +11,48 @@ require_once 'DbConnector.php';
 class Notification {
 
     //1
-    public function AddProSuccess($proid,$EmpID, $msj , $Date, $time) {//$EmpID - employee
+    public function AddProSuccess($proid, $EmpID, $msj , $Date, $time) {//$EmpID - employee
 
         $dbcon = new DbConnector();
         $conn = $dbcon->getConnection();
 
-        $query = 'INSERT INTO notification( ProID, Nfrom, Nto, Status, Code) VALUES ("' . $proid . '","' . $EmpID . '","' . $EmpID . '","0","1")';
+        $query = 'INSERT INTO notification(ProIDOr, Nfrom, Nto, Status, Msj, Date, Time) VALUES ("' . $proid . '","' . $EmpID . '","' . $EmpID . '","0","'.$msj .'","'. $Date.'","'. $time.'")';
         $pstmt = $conn->prepare($query);
         $pstmt->execute();
         
     }
 
     //2
-    public function NewProToAllF($proid,$EmpID) {
+    public function NewProToAllF($proid, $EmpID , $msj , $Date, $time) {
 
         $dbcon = new DbConnector();
         $conn = $dbcon->getConnection();
 
-        $query = 'INSERT INTO notification( ProID, Nfrom, Nto, Status, Code) VALUES ("' . $proid . '","' . $EmpID . '","AllF","0","2")';
+        $query = 'INSERT INTO notification(ProIDOr, Nfrom, Nto, Status, Msj, Date, Time) VALUES ("' . $proid . '","' . $EmpID . '","AllF","0","'.$msj .'","'. $Date.'","'. $time.'")';
         $pstmt = $conn->prepare($query);
         $pstmt->execute();
         
     }
 
     //3
-    public function UpdatebyFSuccess($proid, $FID) {
+    public function UpdatebyFSuccess($proid, $FID, $msj , $Date, $time) {
         
         $dbcon = new DbConnector();
         $conn = $dbcon->getConnection();
 
-        $query = 'INSERT INTO notification( ProID, Nfrom, Nto, Status, Code) VALUES ("' . $proid . '","' . $FID . '","' . $FID . '","0","3")';
+        $query = 'INSERT INTO notification(ProIDOr, Nfrom, Nto, Status, Msj, Date, Time) VALUES ("' . $proid . '","' . $FID . '","' . $FID . '","0","'.$msj .'","'. $Date.'","'. $time.'")';
         $pstmt = $conn->prepare($query);
         $pstmt->execute();
 
     }
     
     //4
-    public function UpdatebyFToE($proid, $FID) {
+    public function UpdatebyFToE($proid, $FID, $emp, $msj , $Date, $time) {
         
         $dbcon = new DbConnector();
         $conn = $dbcon->getConnection();
         
-        $query = 'INSERT INTO notification( ProID, Nfrom, Nto, Status, Code) VALUES ("' . $proid . '","' . $FID . '","' . $emp . '","0","4")';
+        $query = 'INSERT INTO notification(ProIDOr, Nfrom, Nto, Status, Msj, Date, Time) VALUES ("' . $proid . '","' . $FID . '","' . $emp . '","0","'.$msj .'","'. $Date.'","'. $time.'")';
         echo $query;
         $pstmt = $conn->prepare($query);
         $pstmt->execute();
@@ -60,48 +60,48 @@ class Notification {
     }
 
     //5
-    public function NewProToM($proid, $FID) {
+    public function NewProToM($proid, $FID, $msj , $Date, $time) {
         
         $dbcon = new DbConnector();
         $conn = $dbcon->getConnection();
         
-        $query = 'INSERT INTO notification( ProID, Nfrom, Nto, Status, Code) VALUES ("' . $proid . '","' . $FID . '","AllM","0","5")';
+        $query = 'INSERT INTO notification(ProIDOr, Nfrom, Nto, Status, Msj, Date, Time) VALUES ("' . $proid . '","' . $FID . '","AllM","0","'.$msj .'","'. $Date.'","'. $time.'")';
         $pstmt = $conn->prepare($query);
         $pstmt->execute();
 
     }
 
     //6
-    public function UpdatebyMSuccess($proid,$MngID) {
+    public function UpdatebyMSuccess($proid,   $MngID, $msj , $Date, $time) {
 
         $dbcon = new DbConnector();
         $conn = $dbcon->getConnection();
         
-        $query = 'INSERT INTO notification( ProID, Nfrom, Nto, Status, Code) VALUES ("' . $proid . '","' . $MngID . '","' . $MngID . '","0","6")';
+        $query = 'INSERT INTO notification(ProIDOr, Nfrom, Nto, Status, Msj, Date, Time) VALUES ("' . $proid . '","' . $MngID . '","' . $MngID . '","0","'.$msj .'","'. $Date.'","'. $time.'")';
         $pstmt = $conn->prepare($query);
         $pstmt->execute();
 
     }
 
     //7
-    public function UpdatebyMToE($proid,$MngID) {
+    public function UpdatebyMToE($proid, $MngID, $emp, $msj , $Date, $time) {
         
         $dbcon = new DbConnector();
         $conn = $dbcon->getConnection();
         
-        $query = 'INSERT INTO notification( ProID, Nfrom, Nto, Status, Code) VALUES ("' . $proid . '","' . $MngID . '","' . $emp . '","0","7")';
+        $query = 'INSERT INTO notification(ProIDOr, Nfrom, Nto, Status, Msj, Date, Time) VALUES ("' . $proid . '","' . $MngID . '","' . $emp . '","0","'.$msj .'","'. $Date.'","'. $time.'")';
         $pstmt = $conn->prepare($query);
         $pstmt->execute();
         
     }
 
     //8
-    public function UpdatebyMToF($proid,$MngID) {
+    public function UpdatebyMToF($proid, $MngID, $msj , $Date, $time) {
         
         $dbcon = new DbConnector();
         $conn = $dbcon->getConnection();
 
-        $query = 'INSERT INTO notification( ProID, Nfrom, Nto, Status, Code) VALUES ("' . $proid . '","' . $MngID . '","AllF","0","8")';
+        $query = 'INSERT INTO notification(ProIDOr, Nfrom, Nto, Status, Msj, Date, Time) VALUES ("' . $proid . '","' . $MngID . '","AllF","0","'.$msj .'","'. $Date.'","'. $time.'")';
         $pstmt = $conn->prepare($query);
         $pstmt->execute();
         

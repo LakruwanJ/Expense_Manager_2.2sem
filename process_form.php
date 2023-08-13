@@ -21,11 +21,27 @@ if (isset($_POST['submit'])) {
 
     if ($conn->query($query) === TRUE) {
         echo "Proposal added successfully";
-    } else {
-        echo "Error: " . $conn->error;
-    }
+//notification part start
+        require_once 'Classes/Notification.php';
+        $noti = new Classes\Notification();
+        $proid = "";
+        $query = "SELECT ProID FROM proposal ORDER BY ProID DESC LIMIT 1";
+        $pstmt = $con->prepare($query);
+        $pstmt->execute();
+        $rs = $pstmt->fetchAll(PDO::FETCH_OBJ);
+        foreach ($rs as $pro) {
+            $proid = $pro->ProID;
+        }
+        $msj = "Sucessfully Added Proposal by $empID, Proposal ID : $proid";
+        $Date = date("Y-m-d");
+        $Time = date("H:i:s");
 
-    // Close the database connection
-    $conn->close();
+        $noti->AddProSuccess($proid, $empID, $msj, $Date, $Time);
+        $msj = "New Proposal Added by $empID, Proposal ID : $proid";
+        $noti->NewProToAllF($proid, $empID, $msj, $Date, $Time);
+        //notification part start
+    } else {
+//        echo "Error: " . $conn->error;
+    }
 }
 
