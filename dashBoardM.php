@@ -1,9 +1,20 @@
 <!DOCTYPE html>
 <?php
-$MID = '1';
 
 require_once 'Classes/DbConnector.php';
 $dbcon = new Classes\DbConnector();
+
+session_start();
+$uname = $_SESSION["Username"];
+$EmpID = $_SESSION["u_id"];
+$Type = $_SESSION["type"];
+
+if ($uname == NULL) {
+    $_SESSION = array();
+    session_destroy();
+    header("Location: index.php");
+    exit();
+}
 ?>
 
 <html lang="en">
@@ -245,21 +256,21 @@ $dbcon = new Classes\DbConnector();
                                         <div class="mb-3">
                                             <label class="form-label">Select UserName</label>
                                             <span class="input-group-text">Username
-                                            <select class="form-select" required name="uname">
-                                                <?php
-                                                $con = $dbcon->getConnection();
-                                                $query = "SELECT Username FROM employee WHERE Type!='NotFound'";
-                                                $pstmt = $con->prepare($query);
-                                                $pstmt->execute();
-                                                $rs = $pstmt->fetchAll(PDO::FETCH_OBJ);
-                                                foreach ($rs as $valueEmp) {
-                                                    ?>
-                                                    <option value="<?php echo $valueEmp->Username ?>"><?php echo $valueEmp->Username ?></option>
+                                                <select class="form-select" required name="uname">
                                                     <?php
-                                                }
-                                                ?>
-                                            </select></span>
-                                            
+                                                    $con = $dbcon->getConnection();
+                                                    $query = "SELECT Username FROM employee WHERE Type!='NotFound'";
+                                                    $pstmt = $con->prepare($query);
+                                                    $pstmt->execute();
+                                                    $rs = $pstmt->fetchAll(PDO::FETCH_OBJ);
+                                                    foreach ($rs as $valueEmp) {
+                                                        ?>
+                                                        <option value="<?php echo $valueEmp->Username ?>"><?php echo $valueEmp->Username ?></option>
+                                                        <?php
+                                                    }
+                                                    ?>
+                                                </select></span>
+
                                             <div class="input-group">
 
                                             </div>

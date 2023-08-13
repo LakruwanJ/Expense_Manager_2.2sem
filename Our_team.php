@@ -7,6 +7,18 @@ use Classes\DbConnector;
 
 $dbcon = new Classes\DbConnector();
 $con = $dbcon->getConnection();
+
+session_start();
+$uname = $_SESSION["Username"];
+$EmpID = $_SESSION["u_id"];
+$Type = $_SESSION["type"];
+
+if ($uname == NULL) {
+    $_SESSION = array();
+    session_destroy();
+    header("Location: index.php");
+    exit();
+}
 ?>
 
 <html>

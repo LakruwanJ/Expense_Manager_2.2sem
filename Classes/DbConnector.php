@@ -7,7 +7,7 @@ use PDO;
 class DbConnector {
 
     private $host = "localhost";
-    private $dbname = "newemng";
+    private $dbname = "expensemanager";
     private $dbuser = "root";
     private $dbpw = "";
 

@@ -4,7 +4,18 @@ require 'Classes/DbConnector.php';
 $dbcon = new Classes\DbConnector();
 $con = $dbcon->getConnection();
 
-$EmpID = "emp0001";
+session_start();
+$uname = $_SESSION["Username"];
+$EmpID = $_SESSION["u_id"];
+$Type = $_SESSION["type"];
+
+if ($uname == NULL) {
+    $_SESSION = array();
+    session_destroy();
+    header("Location: index.php");
+    exit();
+}
+
 $query = "SELECT * FROM employee WHERE EmpID='" . $EmpID . "'";
 $pstmt = $con->prepare($query);
 $pstmt->execute();

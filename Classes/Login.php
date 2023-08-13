@@ -35,8 +35,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (!empty($uname) && !empty($pass)) {
 
-
-
         $dbcon = new DbConnector();
         $con = $dbcon->getConnection();
 
@@ -80,9 +78,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     header("Location: editProfile.php");
                 } else if ($possision == "Manager") {
                     header("Location: DashMng.php");
-                } else if ($possision == "FTmember") {
+                } else if ($possision == "Finance Team Member") {
                     header("Location: DashFTM.php");
-                } else if ($possision == "emp") {
+                } else if ($possision == "Employee") {
                     header("Location: DashEmp.php");
                 } else {
                     $Err = "6";

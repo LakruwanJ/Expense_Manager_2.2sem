@@ -52,7 +52,17 @@
     <body>
 
         <?php
-        $FID = 'fid0001';
+        session_start();
+        $uname = $_SESSION["Username"];
+        $EmpID = $_SESSION["u_id"];
+        $Type = $_SESSION["type"];
+
+        if ($uname == NULL) {
+            $_SESSION = array();
+            session_destroy();
+            header("Location: index.php");
+            exit();
+        }
         require_once 'Classes/DbConnector.php';
         $dbcon = new Classes\DbConnector();
         ?>
@@ -144,7 +154,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <input type="hidden" name="fid" value="<?php echo$FID ?>" />
+                                <input type="hidden" name="fid" value="<?php echo$EmpID ?>" />
                                 <div class="modal-footer">
                                     <button type="reset" class="btn btn-secondary">Discard</button>
                                     <button type="sumbit" class="btn btn-primary">Add Income</button>
@@ -228,7 +238,7 @@
                                 </select>
                             </div>
                         </div>
-                        <input type="hidden" name="fid" value="<?php echo$FID ?>" />
+                        <input type="hidden" name="fid" value="<?php echo$EmpID ?>" />
                         <div class="modal-footer">
                             <button type="reset" class="btn btn-secondary">Discard</button>
                             <button type="submit" class="btn btn-primary">Add Expense</button>
