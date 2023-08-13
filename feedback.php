@@ -126,20 +126,21 @@ if ($uname == NULL) {
             echo $FeedErr;
             echo $Feed;
             ?>
-                                
-            <!-- Feedback Cards Section -->
-            <?php while ($lise != NULL){?>
-            <div class="alert alert-info m-4" role="alert">
-                <p class="fw-semibold"><?php echo $lise['name']; ?></p>
-                <p class="fst-normal mx-3 my-2"><?php echo $lise['msg']; ?></p>
-                <p class="fw-light text-muted mx-3"><?php echo $lise['date']; ?></p>
-            </div>
-            <?php } ?>
-          
 
-            
+            <!-- Feedback Cards Section -->
+            <?php foreach ($lise as $feedback) { ?>
+                <div class="alert alert-info m-4" role="alert">
+                    <p class="fw-semibold"><?php echo $feedback['name']; ?></p>
+                    <p class="fst-normal mx-3 my-2"><?php echo $feedback['msg']; ?></p>
+                    <p class="fw-light text-muted mx-3"><?php echo $feedback['date']; ?></p>
+                </div>
+            <?php } ?>
+
+
+
+
         </div>
 
-        
+
     </body>
 </html>
