@@ -1,15 +1,11 @@
 <!DOCTYPE html>
 <?php
-// Declare Variables
-$server = "localhost";
-$userName = "root";
-$password = "";
-$dbName = "expensemanager";
+$MID = '1';
 
-// starting Connection with Database
-
-$con = mysqli_connect($server, $userName, $password, $dbName);
+require_once 'Classes/DbConnector.php';
+$dbcon = new Classes\DbConnector();
 ?>
+
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
@@ -62,7 +58,6 @@ $con = mysqli_connect($server, $userName, $password, $dbName);
     </head>
     <body>
 
-        <!--Heading Part Start-->
         <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-body-tertiary hedderBody" style="height: 400px;">
             <div class="container text-center mt-1">
                 <h1 class="display-4 fw-normal greet">Welcome Manager</h1>
@@ -85,10 +80,6 @@ $con = mysqli_connect($server, $userName, $password, $dbName);
                 class="product-device product-device-2 shadow-sm d-none d-md-block"
                 ></div>
         </div>
-        <!--Heading part End-->
-
-
-
 
         <!--Add New Member, Give Promotion, Remove Member, Pending proposals Start-->
         <div class="container text-center mt-5">
@@ -111,37 +102,49 @@ $con = mysqli_connect($server, $userName, $password, $dbName);
                 <div class="modal fade" id="Add" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" >
                         <div class="modal-content w-150">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Add New Member</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <form class="was-validated">
+                            <form class="was-validated" action="Classes/ControlMng.php" method="post">
+                                <input type="hidden" name="Add_member" value="1">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Add New Member</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
                                     <div class="row">
                                         <div class="mb-3">
-                                            <label for="basic-url" class="form-label">Create UserName</label>
+                                            <label class="form-label">Create UserName</label>
                                             <div class="input-group">
-                                                <span class="input-group-text" id="basic-addon3">UserName</span>
-                                                <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4">
+                                                <span class="input-group-text">UserName</span>
+                                                <input type="text" class="form-control" required name="uname">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="mb-3">
-                                            <label for="basic-url" class="form-label">Create Password</label>
+                                            <label class="form-label">Create Password</label>
                                             <div class="input-group">
-                                                <span class="input-group-text" id="basic-addon3">Password</span>
-                                                <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4">
+                                                <span class="input-group-text">Password</span>
+                                                <input type="text" class="form-control" required name="pword">
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="row">
+                                        <label class="form-label">Select Role</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text">Role</span>
+                                            <select class="form-select" required name="Role">            
+                                                <option value="Employee">Employee</option>
+                                                <option value="Manager">Manager</option>
+                                                <option value="Finance Team Member">Finance Team Member</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Discard</button>
+                                    <button type="sumbit" class="btn btn-primary">Add User</button>
+                                </div>
 
-                                </form>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Discard</button>
-                                <button type="button" class="btn btn-primary">Add User</button>
-                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -164,43 +167,51 @@ $con = mysqli_connect($server, $userName, $password, $dbName);
                 <div class="modal fade" id="Promotion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" >
                         <div class="modal-content w-150">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Give Promotion</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <form class="was-validated">
+                            <form class="was-validated" action="Classes/ControlMng.php" method="post">
+                                <input type="hidden" name="promote_member" value="1">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Give Promotion</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
                                     <div class="row">
-                                        <label for="basic-url" class="form-label">Select Employer Username</label>
+                                        <label class="form-label">Select Employer Username</label>
                                         <div class="input-group">
-                                            <span class="input-group-text" id="basic-addon3">Username</span>
-                                            <select class="form-select  mb-3" required aria-label="select example">            
-                                                <option value="1">Select</option>
-                                                <option value="2">Username 2</option>
-                                                <option value="3">Username 3</option>
+                                            <span class="input-group-text">Username</span>
+                                            <select class="form-select" required name="uname">
+                                                <?php
+                                                $con = $dbcon->getConnection();
+                                                $query = "SELECT Username FROM employee";
+                                                $pstmt = $con->prepare($query);
+                                                $pstmt->execute();
+                                                $rs = $pstmt->fetchAll(PDO::FETCH_OBJ);
+                                                foreach ($rs as $valueEmp) {
+                                                    ?>
+                                                    <option value="<?php echo $valueEmp->Username ?>"><?php echo $valueEmp->Username ?></option>
+                                                    <?php
+                                                }
+                                                ?>
                                             </select>
                                         </div>
                                     </div>
-
-
                                     <div class="row">
-                                        <label for="basic-url" class="form-label">Select Role</label>
+                                        <label class="form-label">Select Role</label>
                                         <div class="input-group">
-                                            <span class="input-group-text" id="basic-addon3">Role</span>
-                                            <select class="form-select  mb-3" required aria-label="select example">            
-                                                <option value="1">Select</option>
-                                                <option value="2">Manager</option>
-                                                <option value="3">Finance Team Member</option>
+                                            <span class="input-group-text">Role</span>
+                                            <select class="form-select" required name="role">            
+                                                <option value="Employee">Employee</option>
+                                                <option value="Manager">Manager</option>
+                                                <option value="Finance Team Member">Finance Team Member</option>
                                             </select>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Discard</button>
+                                    <button type="sumbit" class="btn btn-primary">Promote</button>
+                                </div>
 
-                                </form>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Discard</button>
-                                <button type="button" class="btn btn-primary">Promote</button>
-                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -223,28 +234,43 @@ $con = mysqli_connect($server, $userName, $password, $dbName);
                 <div class="modal fade" id="Remove" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" >
                         <div class="modal-content w-150">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Remove Member</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <form class="was-validated">
+                            <form class="was-validated" action="Classes/ControlMng.php" method="post">
+                                <input type="hidden" name="remove_member" value="1">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Remove Member</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
                                     <div class="row">
                                         <div class="mb-3">
-                                            <label for="basic-url" class="form-label">Select UserName</label>
+                                            <label class="form-label">Select UserName</label>
+                                            <span class="input-group-text">Username
+                                            <select class="form-select" required name="uname">
+                                                <?php
+                                                $con = $dbcon->getConnection();
+                                                $query = "SELECT Username FROM employee WHERE Type!='NotFound'";
+                                                $pstmt = $con->prepare($query);
+                                                $pstmt->execute();
+                                                $rs = $pstmt->fetchAll(PDO::FETCH_OBJ);
+                                                foreach ($rs as $valueEmp) {
+                                                    ?>
+                                                    <option value="<?php echo $valueEmp->Username ?>"><?php echo $valueEmp->Username ?></option>
+                                                    <?php
+                                                }
+                                                ?>
+                                            </select></span>
+                                            
                                             <div class="input-group">
-                                                <span class="input-group-text" id="basic-addon3">UserName</span>
-                                                <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4">
+
                                             </div>
                                         </div>
                                     </div>
-
-                                </form>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Discard</button>
-                                <button type="button" class="btn btn-primary">Remove User</button>
-                            </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Discard</button>
+                                    <button type="sumbit" class="btn btn-primary">Remove User</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -255,9 +281,11 @@ $con = mysqli_connect($server, $userName, $password, $dbName);
                         <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1" >
                             <h3 class="pt-6 mt-2 mb-6 display-8 lh-1 fw-bold pendingHedding">Review Proposals</h3>
                             <ul class="d-flex list-unstyled mt-auto">
-                                <a href="proposals.php"><li class="d-flex align-items-center">
+                                <a href="proposals.php">
+                                    <li class="d-flex align-items-center">
                                         <button class="btn btn-warning" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdropPP" aria-controls="staticBackdropPP">Review</button>
-                                    </li></a>
+                                    </li>
+                                </a>
                             </ul>
                         </div>
                     </div>

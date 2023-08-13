@@ -1,18 +1,3 @@
-<!--Database Connection Start-->
-<?php
-// Declare Variables
-$server = "localhost";
-$userName = "root";
-$password = "";
-$dbName = "expensemanager";
-
-// starting Connection with Database
-
-$con = mysqli_connect($server, $userName, $password, $dbName);
-?>
-<!--Database Connection end-->
-
-
 <!DOCTYPE html>
 <html lang="en">
 
