@@ -13,16 +13,20 @@ use Classes\DbConnector;
 
 $dbcon = new DbConnector();
 $con = $dbcon->getConnection();
-$lise = array();
+$lise = array();  // Initialize an empty array to hold feedback records
 
 $query = "SELECT employee.Username, feedback.Msj, feedback.date FROM employee, feedback WHERE employee.EmpID = feedback.EmpID";
 $result_f = $con->query($query);
 
 while ($row = $result_f->fetch()) {
-    $lise['name'] = $row['Username'];
-    $lise['msg'] = $row['Msj'];
-    $lise['date'] = $row['date'];
+    $feedback = array();  // Create an array for each feedback record
+    $feedback['name'] = $row['Username'];
+    $feedback['msg'] = $row['Msj'];
+    $feedback['date'] = $row['date'];
+
+    $lise[] = $feedback;  // Add the feedback array to the main $lise array
 }
+
 
 $name = $FeedErr = $Feed = "";
 $uid = 1; //$_SESSION["u_id"];
