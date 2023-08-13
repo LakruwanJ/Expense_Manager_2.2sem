@@ -8,6 +8,18 @@ and open the template in the editor.
 <?php
 require_once 'Classes/Feedbackctrl.php';
 $currentDate = date("Y-m-d ");
+
+$uname = $_SESSION["Username"];
+$EmpID = $_SESSION["u_id"];
+$Type = $_SESSION["type"];
+
+if ($uname == NULL) {
+    $_SESSION = array();
+    session_destroy();
+    header("Location: login.php");
+    exit();
+}
+
 ?>
 <html>
     <head>

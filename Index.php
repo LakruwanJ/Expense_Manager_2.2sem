@@ -28,21 +28,6 @@ include 'Classes/Login.php';
         <!-- MDB -->
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.3.0/mdb.min.js"></script>
 
-        <style>
-            /* Hide scrollbar for Chrome, Safari and Opera */
-            body::-webkit-scrollbar {
-                display: none;
-            }
-
-            /* Hide scrollbar for IE, Edge and Firefox */
-            body {
-                -ms-overflow-style: none;
-                /* IE and Edge */
-                scrollbar-width: none;
-                /* Firefox */
-            }
-                    </style>
-
         <title>Login</title>
     </head>
     <body >
