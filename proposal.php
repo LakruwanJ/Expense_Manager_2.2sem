@@ -33,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 
     if (isset($_POST['rjct'])) {
-        $re = $pro_obj->approve();
+        $re = $pro_obj->reject();
         //$re = TRUE;
     }
 

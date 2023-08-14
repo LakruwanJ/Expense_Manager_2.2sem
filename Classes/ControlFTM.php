@@ -93,9 +93,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $noti->AddExSuccess($ExID, $FID, $msj, $Date, $Time);
             $noti->AddExSuccessToM($ExID, $FID, $msj, $Date, $Time);
             $noti->AddExSuccessToE($ExID, $FID, $emp, $msj, $Date, $Time);
-//            header("Location: ../dashBoardF.php");
+            header("Location: ../dashBoardF.php");
         } else {
-//            header("Location: ../dashBoardF.php");
+            header("Location: ../dashBoardF.php");
         }
     }
 } else {

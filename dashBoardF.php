@@ -216,7 +216,7 @@
                                 <select class="form-select  mb-3" required name="epid">
                                     <?php
                                     $con = $dbcon->getConnection();
-                                    $query = "SELECT ProID FROM proposal WHERE Status='Appored'";
+                                    $query = "SELECT ProID FROM proposal WHERE Status='Approved'";
                                     $pstmt = $con->prepare($query);
                                     $pstmt->execute();
                                     $rs = $pstmt->fetchAll(PDO::FETCH_OBJ);

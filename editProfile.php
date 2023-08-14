@@ -1,9 +1,5 @@
 <?php
 require_once 'Classes/EditPro.php';
-
-if ($_SESSION['logged'] !== TRUE) {
-    header('Location: index.php');
-}//can't log directly in another pages
 ?>
 
 <!DOCTYPE html>

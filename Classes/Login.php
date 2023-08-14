@@ -74,7 +74,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 //echo "$fullName";
 
-                if ($fullName == NULL && $email == NULL && $PhoneNumOffice == 0 && $PhoneNumPersonal == 0) { //employee table doesn't have fullName column 
+                if ($fullName == NULL && $email == NULL && $PhoneNumOffice == NULL && $PhoneNumPersonal == NULL) { //employee table doesn't have fullName column 
                     header("Location: editProfile.php");
                 } else if ($possision == "Manager") {
                     header("Location: DashMng.php");
